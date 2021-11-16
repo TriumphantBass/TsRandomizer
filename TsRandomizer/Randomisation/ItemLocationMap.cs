@@ -374,13 +374,15 @@ namespace TsRandomizer.Randomisation
 			Add(new ItemKey(16, 22, 200, 192), "Pit secret room", ItemProvider.Get(EItemType.MaxAura), Nightmare & OculusRift); //only requires LeftPyramid to reach but Nightmate to escape
 			Add(new ItemKey(16, 16, 1512, 144), "Regret chest", ItemProvider.Get(EInventoryRelicType.EssenceOfSpace), Nightmare & OculusRift); //only requires LeftPyramid to reach but Nightmate to escape
 			areaName = "Temporal Gyre";
-			Add(new ItemKey(14, 14, 200, 832), "Gyre Chest 1", null, TheLabPoweredOff);
-			Add(new ItemKey(14, 17, 200, 832), "Gyre Chest 2", null, TheLabPoweredOff);
-			Add(new ItemKey(14, 20, 200, 832), "Gyre Chest 3", null, TheLabPoweredOff);
-			Add(new ItemKey(14, 8, 120, 176), "Ravenlord Entry", null, TheLabPoweredOff);
-			Add(new ItemKey(14, 9, 280, 176), "Ravenlord Exit", null, TheLabPoweredOff);
-			Add(new ItemKey(14, 6, 40, 208), "Ifrit Entry", null, TheLabPoweredOff);
-			Add(new ItemKey(14, 7, 280, 208), "Ifrit Exit", null, TheLabPoweredOff);
+			Add(new ItemKey(14, 14, 200, 832), "Gyre Chest 1", null, AccessToLakeDesolation);
+			Add(new ItemKey(14, 17, 200, 832), "Gyre Chest 2", null, AccessToLakeDesolation);
+			Add(new ItemKey(14, 20, 200, 832), "Gyre Chest 3", null, AccessToLakeDesolation);
+			Add(new ItemKey(14, 8, 120, 176), "Ravenlord Entry", null, AccessToLakeDesolation);
+			Add(new ItemKey(14, 9, 200, 125), "Ravenlord Pedestal", null, AccessToLakeDesolation);
+			Add(new ItemKey(14, 9, 280, 176), "Ravenlord Exit", null, AccessToLakeDesolation);
+			Add(new ItemKey(14, 6, 40, 208), "Ifrit Entry", null, AccessToLakeDesolation);
+			Add(new ItemKey(14, 7, 200, 205), "Ifrit Pedestal", null, AccessToLakeDesolation);
+			Add(new ItemKey(14, 7, 280, 208), "Ifrit Exit", null, AccessToLakeDesolation);
 		}
 
 		void AddDownloadTerminals()
