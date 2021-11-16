@@ -374,14 +374,13 @@ namespace TsRandomizer.Randomisation
 			Add(new ItemKey(16, 22, 200, 192), "Pit secret room", ItemProvider.Get(EItemType.MaxAura), Nightmare & OculusRift); //only requires LeftPyramid to reach but Nightmate to escape
 			Add(new ItemKey(16, 16, 1512, 144), "Regret chest", ItemProvider.Get(EInventoryRelicType.EssenceOfSpace), Nightmare & OculusRift); //only requires LeftPyramid to reach but Nightmate to escape
 			areaName = "Temporal Gyre";
-			/*var challengeDungion = Nightmare;
-			Add(new ItemKey(14, 14, 200, 832), ItemInfo.Dummy, challengeDungion); //transition chest 1
-			Add(new ItemKey(14, 17, 200, 832), ItemInfo.Dummy, challengeDungion); //transition chest 2
-			Add(new ItemKey(14, 20, 200, 832), ItemInfo.Dummy, challengeDungion); //transition chest 3
-			Add(new ItemKey(14, 8, 120, 176), ItemInfo.Dummy, challengeDungion); //Ravenlord pre fight
-			Add(new ItemKey(14, 9, 280, 176), ItemInfo.Dummy, challengeDungion); //Ravenlord post fight
-			Add(new ItemKey(14, 6, 40, 208), ItemInfo.Dummy, challengeDungion); //ifrid pre fight
-			Add(new ItemKey(14, 7, 280, 208), ItemInfo.Dummy, challengeDungion); //ifrid post fight*/
+			Add(new ItemKey(14, 14, 200, 832), "Gyre Chest 1", null, TheLabPoweredOff);
+			Add(new ItemKey(14, 17, 200, 832), "Gyre Chest 2", null, TheLabPoweredOff);
+			Add(new ItemKey(14, 20, 200, 832), "Gyre Chest 3", null, TheLabPoweredOff);
+			Add(new ItemKey(14, 8, 120, 176), "Ravenlord Entry", null, TheLabPoweredOff);
+			Add(new ItemKey(14, 9, 280, 176), "Ravenlord Exit", null, TheLabPoweredOff);
+			Add(new ItemKey(14, 6, 40, 208), "Ifrit Entry", null, TheLabPoweredOff);
+			Add(new ItemKey(14, 7, 280, 208), "Ifrit Exit", null, TheLabPoweredOff);
 		}
 
 		void AddDownloadTerminals()
