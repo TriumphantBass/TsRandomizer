@@ -49,7 +49,7 @@ namespace TsRandomizer
 				{"SpecificKeycards", 1U << 7},
 				{"Inverted", 1U << 8},
 				{"StinkyMaw", 1U << 9},
-				{"GyreArchives", 1U << 9},
+				{"GyreArchives", 1U << 10},
 				{"DeathLink", 1U << 17}
 			};
 
