@@ -19,12 +19,16 @@ namespace TsRandomizer.LevelObjects.ItemManipulators
 	{
 		public EnvPrefabLabDocuments(Mobile typedObject, ItemLocation itemLocation) : base(typedObject, itemLocation)
 		{
-			Level.RequestChangeLevel(new LevelChangeRequest { LevelID = 14, RoomID = 11 });
 		}
 
 		protected override void Initialize(SeedOptions options)
 		{
 
 		}
-	}
+
+        protected override void OnUpdate(GameplayScreen gameplayScreen)
+        {
+            base.OnUpdate(gameplayScreen);
+        }
+    }
 }
