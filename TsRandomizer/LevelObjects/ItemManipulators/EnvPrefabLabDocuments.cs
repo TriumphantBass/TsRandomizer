@@ -18,7 +18,6 @@ namespace TsRandomizer.LevelObjects.ItemManipulators
 	{
 		public EnvPrefabLabDocuments(Mobile typedObject, ItemLocation itemLocation) : base(typedObject, itemLocation)
 		{
-
 		}
 
 		protected override void Initialize(SeedOptions options)
@@ -28,7 +27,6 @@ namespace TsRandomizer.LevelObjects.ItemManipulators
 
 		protected override void OnUpdate(GameplayScreen gameplayScreen)
 		{
-			
 		}
 	}
 }
