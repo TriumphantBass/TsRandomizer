@@ -56,6 +56,12 @@ namespace TsRandomizer.Screens
 			new Roomkey(14, 25)
 		};
 
+		static readonly Roomkey[] FalseWarpRooms =
+		{
+			new Roomkey(11, 4), // Lab cabinet
+			new Roomkey(2, 51) // Backer memory room
+		};
+
 		ItemLocationMap itemLocations;
 		bool isShowingAviableLocations;
 
@@ -182,6 +188,10 @@ namespace TsRandomizer.Screens
 			foreach (var roomkey in BossRooms)
 				foreach (var block in GetRoom(roomkey).Blocks.Values)
 					block.IsBoss = true;
+
+			foreach (var roomkey in FalseWarpRooms)
+				foreach (var block in GetRoom(roomkey).Blocks.Values)
+					block.IsTimespinner = true;
 		}
 
 		public override void Update(GameTime gameTime, InputState input)
