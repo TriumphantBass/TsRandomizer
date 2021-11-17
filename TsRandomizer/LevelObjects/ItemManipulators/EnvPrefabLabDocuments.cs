@@ -1,14 +1,15 @@
-﻿// using System;
-// using System.Linq;
-// using Timespinner.GameAbstractions.GameObjects;
-// using Timespinner.GameAbstractions.Gameplay;
-// using Timespinner.GameAbstractions.HUD;
-// using Timespinner.GameAbstractions.Inventory;
+﻿using System;
+using System.Linq;
+using Timespinner.GameAbstractions.GameObjects;
+using Timespinner.GameAbstractions.Gameplay;
+using Timespinner.GameAbstractions.HUD;
+using Timespinner.GameAbstractions.Inventory;
 using Timespinner.GameObjects.BaseClasses;
-// using TsRandomizer.Extensions;
+using TsRandomizer.Extensions;
 using TsRandomizer.IntermediateObjects;
 using TsRandomizer.Randomisation;
 using TsRandomizer.Screens;
+
 
 namespace TsRandomizer.LevelObjects.ItemManipulators
 {
@@ -18,15 +19,12 @@ namespace TsRandomizer.LevelObjects.ItemManipulators
 	{
 		public EnvPrefabLabDocuments(Mobile typedObject, ItemLocation itemLocation) : base(typedObject, itemLocation)
 		{
+			Level.RequestChangeLevel(new LevelChangeRequest { LevelID = 14, RoomID = 11 });
 		}
 
 		protected override void Initialize(SeedOptions options)
 		{
 
-		}
-
-		protected override void OnUpdate(GameplayScreen gameplayScreen)
-		{
 		}
 	}
 }

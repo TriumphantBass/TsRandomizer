@@ -1,5 +1,7 @@
 ﻿using Timespinner.GameObjects.BaseClasses;
 using TsRandomizer.IntermediateObjects;
+using TsRandomizer.Screens;
+
 
 namespace TsRandomizer.LevelObjects.Other
 {
@@ -11,5 +13,5 @@ namespace TsRandomizer.LevelObjects.Other
 		{
 			Dynamic._isUsable = true;
 		}
-	}
+    }
 }
