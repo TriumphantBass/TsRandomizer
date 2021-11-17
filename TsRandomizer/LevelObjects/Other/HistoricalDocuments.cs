@@ -10,6 +10,8 @@ namespace TsRandomizer.LevelObjects.Other
 	{
 		public HistoricalDocuments(Mobile typedObject) : base(typedObject)
 		{
+			TimeSpinnerGame.Localizar.OverrideKey("q_ram_4_lun_29alt",
+				"It says, 'Redacted Temporal Research: Lord of Ravens'. Maybe I should ask the crow about this...");
 		}
 
 		protected override void Initialize(SeedOptions options)
