@@ -78,6 +78,9 @@ namespace TsRandomizer.Randomisation
 			AddPastItemLocations();
 			AddPyramidItemLocations();
 
+			if (options.GyreArchives)
+				AddGyreItemLocations();
+
 			if (options.DownloadableItems)
 				AddDownloadTerminals();
 
@@ -373,10 +376,15 @@ namespace TsRandomizer.Randomisation
 			Add(new ItemKey(16, 3, 88, 192), "Conviction guarded room", ItemProvider.Get(EItemType.MaxHP), LeftPyramid);
 			Add(new ItemKey(16, 22, 200, 192), "Pit secret room", ItemProvider.Get(EItemType.MaxAura), Nightmare & OculusRift); //only requires LeftPyramid to reach but Nightmate to escape
 			Add(new ItemKey(16, 16, 1512, 144), "Regret chest", ItemProvider.Get(EInventoryRelicType.EssenceOfSpace), Nightmare & OculusRift); //only requires LeftPyramid to reach but Nightmate to escape
-			areaName = "Temporal Gyre";
+			areaName = "Temporal Gyre"; // Main path is in pyramid logic, boss rooms are behind GyreArchives flag
 			Add(new ItemKey(14, 14, 200, 832), "Gyre Chest 1", null, Nightmare);
 			Add(new ItemKey(14, 17, 200, 832), "Gyre Chest 2", null, Nightmare);
 			Add(new ItemKey(14, 20, 200, 832), "Gyre Chest 3", null, Nightmare);
+		}
+
+		void AddGyreItemLocations()
+		{
+			areaName = "Temporal Gyre";
 			Add(new ItemKey(14, 8, 120, 176), "Ravenlord Entry", null, UpperLab & R.MerchantCrow);
 			Add(new ItemKey(14, 9, 200, 125), "Ravenlord Pedestal", null, UpperLab & R.MerchantCrow);
 			Add(new ItemKey(14, 9, 280, 176), "Ravenlord Exit", null, UpperLab & R.MerchantCrow);

@@ -146,20 +146,22 @@ namespace TsRandomizer.LevelObjects
 			// Placeholder Gyre hooks TODO make objects for these
 			RoomTriggers.Add(new RoomTrigger(11, 4, (level, itemLocation, seedOptions, screenManager) =>
 			{
-				if (!level.GameSave.HasFamiliar(EInventoryFamiliarType.MerchantCrow)) return;
+				if (!seedOptions.GyreArchives || !level.GameSave.HasFamiliar(EInventoryFamiliarType.MerchantCrow)) return;
 				SpawnGyreWarp(level, 14, 8); // lab to ravenlord
 			}));
 			RoomTriggers.Add(new RoomTrigger(14, 24, (level, itemLocation, seedOptions, screenManager) =>
 			{
+				if (!seedOptions.GyreArchives) return;
 				SpawnGyreWarp(level, 11, 6); // ravenlord to lab
 			}));
 			RoomTriggers.Add(new RoomTrigger(2, 51, (level, itemLocation, seedOptions, screenManager) =>
 			{
-				if (!level.GameSave.HasFamiliar(EInventoryFamiliarType.Kobo)) return;
+				if (!seedOptions.GyreArchives || !level.GameSave.HasFamiliar(EInventoryFamiliarType.Kobo)) return;
 				SpawnGyreWarp(level, 14, 6); // backer room to Ifrit
 			}));
 			RoomTriggers.Add(new RoomTrigger(14, 25, (level, itemLocation, seedOptions, screenManager) =>
 			{
+				if (!seedOptions.GyreArchives) return;
 				SpawnGyreWarp(level, 2, 3); // Ifrit to shop
 			}));
 			RoomTriggers.Add(new RoomTrigger(14, 23, (level, itemLocation, seedOptions, screenManager) =>

@@ -1,5 +1,6 @@
 ﻿using Timespinner.GameObjects.BaseClasses;
 using TsRandomizer.IntermediateObjects;
+using TsRandomizer.Screens;
 
 namespace TsRandomizer.LevelObjects.Other
 {
@@ -9,11 +10,14 @@ namespace TsRandomizer.LevelObjects.Other
 	{
 		public HistoricalDocuments(Mobile typedObject) : base(typedObject)
 		{
-			typedObject.IsFlippedVertically = true;
 		}
 
 		protected override void Initialize(SeedOptions options)
 		{
 		}
-	}
+        protected override void OnUpdate(GameplayScreen gameplayScreen)
+        {
+            base.OnUpdate(gameplayScreen);
+        }
+    }
 }
