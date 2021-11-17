@@ -380,9 +380,9 @@ namespace TsRandomizer.Randomisation
 			Add(new ItemKey(14, 8, 120, 176), "Ravenlord Entry", null, UpperLab & R.MerchantCrow);
 			Add(new ItemKey(14, 9, 200, 125), "Ravenlord Pedestal", null, UpperLab & R.MerchantCrow);
 			Add(new ItemKey(14, 9, 280, 176), "Ravenlord Exit", null, UpperLab & R.MerchantCrow);
-			Add(new ItemKey(14, 6, 40, 208), "Ifrit Entry", null, RightSideLibraryElevator & R.Kobo);
-			Add(new ItemKey(14, 7, 200, 205), "Ifrit Pedestal", null, RightSideLibraryElevator & R.Kobo);
-			Add(new ItemKey(14, 7, 280, 208), "Ifrit Exit", null, RightSideLibraryElevator & R.Kobo);
+			Add(new ItemKey(14, 6, 40, 208), "Ifrit Entry", null, UpperLeftLibrary & R.Kobo);
+			Add(new ItemKey(14, 7, 200, 205), "Ifrit Pedestal", null, UpperLeftLibrary & R.Kobo);
+			Add(new ItemKey(14, 7, 280, 208), "Ifrit Exit", null, UpperLeftLibrary & R.Kobo);
 		}
 
 		void AddDownloadTerminals()
