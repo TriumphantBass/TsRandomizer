@@ -216,6 +216,10 @@ namespace TsRandomizer.Randomisation
 			Add(new ItemKey(2, 47, 216, 208), "Storage room chest 1", ItemProvider.Get(EInventoryUseItemType.Ether), LeftLibrary & R.CardD);
 			Add(new ItemKey(2, 47, 152, 208), "Storage room chest 2", ItemProvider.Get(EInventoryOrbType.Blade, EOrbSlot.Passive), LeftLibrary & R.CardD);
 			Add(new ItemKey(2, 47, 88, 208), "Storage room chest 3", ItemProvider.Get(EInventoryOrbType.Blade, EOrbSlot.Spell), LeftLibrary & R.CardD);
+			areaName = "Shop";
+			Add(new ItemKey(20, 0, 0, 1), "Merchant Crow Present Item 1", null, LeftLibrary);
+			Add(new ItemKey(20, 0, 0, 2), "Merchant Crow Shiny Rock Stash 1", null, LeftLibrary);
+			Add(new ItemKey(20, 0, 0, 3), "Merchant Crow Shiny Rock Stash 2", null, LeftLibrary);
 			areaName = "Libary top";
 			Add(new ItemKey(2, 56, 168, 192), "Backer room chest 5", ItemProvider.Get(EInventoryUseItemType.GoldNecklace), UpperLeftLibrary);
 			Add(new ItemKey(2, 56, 392, 192), "Backer room chest 4", ItemProvider.Get(EInventoryUseItemType.GoldRing), UpperLeftLibrary);
@@ -367,6 +371,9 @@ namespace TsRandomizer.Randomisation
 			Add(new ItemKey(6, 23, 856, 208), "Statue room", ItemProvider.Get(EInventoryEquipmentType.VileteDress), UpperRoyalTower & R.UpwardDash);
 			Add(new ItemKey(6, 14, 136, 208), "Aelana's pedestal", ItemProvider.Get(EInventoryOrbType.Pink, EOrbSlot.Melee), UpperRoyalTower);
 			Add(new ItemKey(6, 14, 184, 205), "After Aelana", ItemProvider.Get(EInventoryUseItemType.WarpCard), UpperRoyalTower);
+			areaName = "Shop";
+			Add(new ItemKey(20, 0, 0, 4), "Merchant Crow Past Item 1", null, MidRoyalTower);
+			Add(new ItemKey(20, 0, 0, 5), "Merchant Crow Past Item 2", null, MidRoyalTower);
 		}
 
 		void AddPyramidItemLocations()
