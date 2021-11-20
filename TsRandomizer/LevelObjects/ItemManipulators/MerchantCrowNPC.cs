@@ -34,6 +34,27 @@ namespace TsRandomizer.LevelObjects.ItemManipulators
             _merchandiseInventory.AddItem(EInventoryUseItemType.SandBottle);
             _merchandiseInventory.AddItem(EInventoryUseItemType.ChaosHeal);
 
+            ItemKey bonus_item_present_1 = new ItemKey(2, 3, 131, 181);
+            ItemKey bonus_item_shiny_rock_1 = new ItemKey(6, 4, 131, 1);
+            ItemKey bonus_item_shiny_rock_2 = new ItemKey(2, 3, 131, 0);
+            ItemKey bonus_item_past_1 = new ItemKey(6, 4, 131, 165);
+            ItemKey bonus_item_past_2 = new ItemKey(6, 4, 131, 0);
+
+            /*
+            if (Dynamic._isInPresent)
+            {
+                _merchandiseInventory.AddItem(itemLocations[bonus_item_present_1]);
+            }
+            else
+            {
+                _merchandiseInventory.AddItem(itemLocations[bonus_item_past_1]);
+                _merchandiseInventory.AddItem(itemLocations[bonus_item_past_2]);
+            }
+            // TODO gate behind shiny rock
+            _merchandiseInventory.AddItem(itemLocations[bonus_item_shiny_rock_1]);
+            _merchandiseInventory.AddItem(itemLocations[bonus_item_shiny_rock_2]);
+            */
+
             Dynamic._merchandiseInventory = _merchandiseInventory;
         }
     }
