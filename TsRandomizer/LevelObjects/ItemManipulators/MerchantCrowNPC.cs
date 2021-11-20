@@ -6,10 +6,10 @@ using TsRandomizer.Randomisation;
 namespace TsRandomizer.LevelObjects.ItemManipulators
 {
     [TimeSpinnerType("Timespinner.GameObjects.NPCs.MerchantCrowNPC")]
-    class MerchantCrowNpc : LevelObject
+    class MerchantCrowNpc : ItemManipulator
     {
         MerchantInventory _merchandiseInventory = new MerchantInventory();
-        public MerchantCrowNpc(Mobile typedObject) : base(typedObject)
+        public MerchantCrowNpc(Mobile typedObject, ItemLocation itemLocation) : base(typedObject, itemLocation)
         {
 
         }
@@ -21,6 +21,7 @@ namespace TsRandomizer.LevelObjects.ItemManipulators
             {
                 _merchandiseInventory.AddItem(EInventoryUseItemType.FuturePotion);
                 _merchandiseInventory.AddItem(EInventoryUseItemType.FutureEther);
+
             }
             else
             {

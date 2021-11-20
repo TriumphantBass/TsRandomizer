@@ -401,10 +401,10 @@ namespace TsRandomizer.Randomisation
 			areaName = "Shop";
 			Add(new ItemKey(2, 3, 131, 181), "Merchant Crow Present Item 1", null, LeftLibrary);
 			Add(new ItemKey(6, 4, 131, 165), "Merchant Crow Past Item 1", null, MidRoyalTower);
-			Add(new ItemKey(6, 4, 131, 166), "Merchant Crow Past Item 2", null, MidRoyalTower);
+			Add(new ItemKey(6, 4, 131, 0), "Merchant Crow Past Item 2", null, MidRoyalTower);
 			// Can be reached from either shop, listing one in each era so the rooms show correctly
-			Add(new ItemKey(6, 4, 131, 167), "Merchant Crow Shiny Rock Stash 1", null, (LeftLibrary | MidRoyalTower) & R.ShinyRock);
-			Add(new ItemKey(2, 3, 131, 185), "Merchant Crow Shiny Rock Stash 2", null, (LeftLibrary | MidRoyalTower) & R.ShinyRock);
+			Add(new ItemKey(6, 4, 131, 1), "Merchant Crow Shiny Rock Stash 1", null, (LeftLibrary | MidRoyalTower) & R.ShinyRock);
+			Add(new ItemKey(2, 3, 131, 0), "Merchant Crow Shiny Rock Stash 2", null, (LeftLibrary | MidRoyalTower) & R.ShinyRock);
 		}
 
 		void AddDownloadTerminals()
