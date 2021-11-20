@@ -1,5 +1,6 @@
 ﻿using Timespinner.GameObjects.BaseClasses;
 using TsRandomizer.IntermediateObjects;
+using TsRandomizer.Randomisation;
 
 namespace TsRandomizer.LevelObjects.Other
 {
@@ -11,7 +12,7 @@ namespace TsRandomizer.LevelObjects.Other
 		{
 		}
 
-		protected override void Initialize(SeedOptions options)
+		protected override void Initialize(SeedOptions options, ItemLocationMap itemLocations)
 		{
 			if (!(!LevelReflected.GetLevelSaveBool("HasWinchBeenUsed") ? false : LevelReflected.GetLevelSaveBool("IsDrawbridgeRaised")))
 			{

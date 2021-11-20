@@ -17,7 +17,7 @@ namespace TsRandomizer.LevelObjects.ItemManipulators
 		{
 		}
 
-		protected override void Initialize(SeedOptions options)
+		protected override void Initialize(SeedOptions options, ItemLocationMap itemLocations)
 		{
 			initialProgress = Dynamic.PrimaryProgress;
 		}

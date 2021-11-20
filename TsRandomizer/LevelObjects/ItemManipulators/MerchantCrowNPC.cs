@@ -14,7 +14,7 @@ namespace TsRandomizer.LevelObjects.ItemManipulators
 
         }
 
-        protected override void Initialize(SeedOptions options)
+        protected override void Initialize(SeedOptions options, ItemLocationMap itemLocations)
         {
             _merchandiseInventory.AddItem(EInventoryUseItemType.WarpCard);
             if (Dynamic._isInPresent)

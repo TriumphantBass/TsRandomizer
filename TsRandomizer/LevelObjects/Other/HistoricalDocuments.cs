@@ -1,5 +1,6 @@
 ﻿using Timespinner.GameObjects.BaseClasses;
 using TsRandomizer.IntermediateObjects;
+using TsRandomizer.Randomisation;
 
 namespace TsRandomizer.LevelObjects.Other
 {
@@ -15,7 +16,7 @@ namespace TsRandomizer.LevelObjects.Other
 					"It says, 'Redacted Temporal Research: Lord of Ravens'. Maybe I should ask the crow about this...");
 		}
 
-		protected override void Initialize(SeedOptions options)
+		protected override void Initialize(SeedOptions options, ItemLocationMap itemLocations)
 		{
 			gyreArchivesEnabled = options.GyreArchives;
 		}

@@ -179,7 +179,7 @@ namespace TsRandomizer.LevelObjects
 						continue;
 
 					Objects.Add(levelObject);
-					levelObject.Initialize(options);
+					levelObject.Initialize(options, itemLocations);
 				}
 			}
 		}
@@ -266,7 +266,7 @@ namespace TsRandomizer.LevelObjects
 			}
 		}
 
-		protected virtual void Initialize(SeedOptions options)
+		protected virtual void Initialize(SeedOptions options, ItemLocationMap itemLocations)
 		{
 		}
 

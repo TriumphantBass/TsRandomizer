@@ -17,7 +17,7 @@ namespace TsRandomizer.LevelObjects.Other
 		{
 		}
 
-		protected override void Initialize(SeedOptions options)
+		protected override void Initialize(SeedOptions options, ItemLocationMap itemLocations)
 		{
 			requiresSpecificKey = options.SpecificKeys;
 		}
