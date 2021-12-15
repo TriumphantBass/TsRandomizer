@@ -21,6 +21,7 @@ namespace TsRandomizer.LevelObjects
 	{
 		static readonly LookupDictionary<RoomItemKey, RoomTrigger> RoomTriggers = new LookupDictionary<RoomItemKey, RoomTrigger>(rt => rt.key);
 
+		static readonly Type BossDoorEventType = TimeSpinnerType.Get("Timespinner.GameObjects.Events.Doors.BossDoorEvent");
 		static readonly Type TransitionWarpEventType = TimeSpinnerType.Get("Timespinner.GameObjects.Events.Doors.TransitionWarpEvent");
 		static readonly Type GyreType = TimeSpinnerType.Get("Timespinner.GameObjects.Events.Doors.GyrePortalEvent");
 		static readonly Type NelisteNpcType = TimeSpinnerType.Get("Timespinner.GameObjects.NPCs.AstrologerNPC");
@@ -221,6 +222,29 @@ namespace TsRandomizer.LevelObjects
 				((Dictionary<int, GameEvent>)level.AsDynamic()._levelEvents).Values
 					.FirstOrDefault(obj => obj.GetType() == PedistalType)
 					?.SilentKill();
+			}));
+			RoomTriggers.Add(new RoomTrigger(16, 1, (level, itemLocation, seedOptions, screenManager) => {
+				// Allow the post-Nightmare chest to spawn
+				if (!seedOptions.QuickPyramid)
+					return;
+				level.GameSave.SetValue("IsGameCleared", true);
+				level.GameSave.SetValue("IsEndingCDCleared", true);
+			}));
+			RoomTriggers.Add(new RoomTrigger(16, 5, (level, itemLocation, seedOptions, screenManager) => 
+			{
+				// Prevent Sandman's door from opening in Quick Pyramid mode if missing tuning gears
+				if (!seedOptions.QuickPyramid ||
+					(
+						level.GameSave.HasRelic(EInventoryRelicType.TimespinnerGear1) &&
+						level.GameSave.HasRelic(EInventoryRelicType.TimespinnerGear2) &&
+						level.GameSave.HasRelic(EInventoryRelicType.TimespinnerGear3)
+					)
+				)
+					return;
+				var bossDoor = ((Dictionary<int, GameEvent>)level.AsDynamic()._levelEvents).Values
+					.FirstOrDefault(obj => obj.GetType() == BossDoorEventType);
+				bossDoor.AsDynamic()._isLocked = true;
+				bossDoor.AsDynamic()._isDemonLocked = true;
 			}));
 			RoomTriggers.Add(new RoomTrigger(8, 6, (level, itemLocation, seedOptions, screenManager) =>
 			{

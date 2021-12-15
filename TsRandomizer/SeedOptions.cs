@@ -25,7 +25,8 @@ namespace TsRandomizer
 		public bool GyreArchives => (Flags & 1 << 10) > 0;
 		public bool Cantoran => (Flags & 1 << 11) > 0;
 		public bool LoreChecks => (Flags & 1 << 12) > 0;
-    public bool DamageRando => (Flags & 1 << 13) > 0;
+		public bool DamageRando => (Flags & 1 << 13) > 0;
+		public bool QuickPyramid => (Flags & 1 << 14) > 0;
 
 		//Non visable flags
 		public bool Archipelago => (Flags & 1 << 16) > 0;
@@ -54,8 +55,9 @@ namespace TsRandomizer
 				{"StinkyMaw", 1U << 9},
 				{"GyreArchives", 1U << 10},
 				{"Cantoran", 1U << 11},
-        {"LoreChecks", 1U << 12},
+				{"LoreChecks", 1U << 12},
 				{"DamageRando", 1U << 13 },
+				{"QuickPyramid", 1U << 14 },
 				{"DeathLink", 1U << 17}
 			};
 

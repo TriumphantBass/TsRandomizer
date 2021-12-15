@@ -55,6 +55,7 @@ namespace TsRandomizer.Randomisation
 		internal Gate EmperorsTower;
 		//pyramid
 		internal Gate LeftPyramid;
+		internal Gate NightmareDoor;
 		internal Gate Nightmare;
 
 		public new ItemLocation this[ItemKey key] => GetItemLocationBasedOnKeyOrRoomKey(key);
@@ -173,15 +174,18 @@ namespace TsRandomizer.Randomisation
 			EmperorsTower = UpperLab;
 
 			//pyramid
-			LeftPyramid = UpperLab & (
-				R.TimespinnerWheel & R.TimespinnerSpindle &
-				R.TimespinnerPiece1 & R.TimespinnerPiece2 & R.TimespinnerPiece3);
-			Nightmare = LeftPyramid & R.UpwardDash;
+			LeftPyramid = (SeedOptions.QuickPyramid)
+				? UpperLab & (R.TimespinnerWheel & R.TimespinnerSpindle)
+				: UpperLab & (R.TimespinnerWheel & R.TimespinnerSpindle & R.TimespinnerPiece1 & R.TimespinnerPiece2 & R.TimespinnerPiece3);
+			NightmareDoor = LeftPyramid & R.UpwardDash;
+			Nightmare = (SeedOptions.QuickPyramid)
+				? NightmareDoor & R.TimespinnerPiece1 & R.TimespinnerPiece2 & R.TimespinnerPiece3
+				: NightmareDoor;
 		}
 
 		static int CalculateCapacity(SeedOptions options)
 		{
-			var capacity = 168;
+			var capacity = 169;
 
 			if (options.DownloadableItems)
 				capacity += 14;
@@ -397,12 +401,13 @@ namespace TsRandomizer.Randomisation
 			areaName = "Ancient Pyramid";
 			Add(new ItemKey(16, 14, 312, 192), "Why not it's right there", ItemProvider.Get(EItemType.MaxSand), LeftPyramid);
 			Add(new ItemKey(16, 3, 88, 192), "Conviction guarded room", ItemProvider.Get(EItemType.MaxHP), LeftPyramid);
-			Add(new ItemKey(16, 22, 200, 192), "Pit secret room", ItemProvider.Get(EItemType.MaxAura), Nightmare & OculusRift); //only requires LeftPyramid to reach but Nightmate to escape
-			Add(new ItemKey(16, 16, 1512, 144), "Regret chest", ItemProvider.Get(EInventoryRelicType.EssenceOfSpace), Nightmare & OculusRift); //only requires LeftPyramid to reach but Nightmate to escape
+			Add(new ItemKey(16, 22, 200, 192), "Pit secret room", ItemProvider.Get(EItemType.MaxAura), NightmareDoor & OculusRift); //only requires LeftPyramid to reach but NightmareDoor to escape
+			Add(new ItemKey(16, 16, 1512, 144), "Regret chest", ItemProvider.Get(EInventoryRelicType.EssenceOfSpace), NightmareDoor & OculusRift); //only requires LeftPyramid to reach but NightmareDoor to escape
+			Add(new ItemKey(16, 5, 136, 192), "Nightmare Door chest", ItemProvider.Get(EInventoryRelicType.EssenceOfSpace), NightmareDoor);
 			areaName = "Temporal Gyre"; // Main path is in pyramid logic, boss rooms are behind GyreArchives flag
-			Add(new ItemKey(14, 14, 200, 832), "Gyre Chest 1", null, Nightmare);
-			Add(new ItemKey(14, 17, 200, 832), "Gyre Chest 2", null, Nightmare);
-			Add(new ItemKey(14, 20, 200, 832), "Gyre Chest 3", null, Nightmare);
+			Add(new ItemKey(14, 14, 200, 832), "Gyre Chest 1", null, NightmareDoor);
+			Add(new ItemKey(14, 17, 200, 832), "Gyre Chest 2", null, NightmareDoor);
+			Add(new ItemKey(14, 20, 200, 832), "Gyre Chest 3", null, NightmareDoor);
 		}
 
 		void AddGyreItemLocations()
