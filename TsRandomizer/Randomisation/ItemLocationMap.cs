@@ -58,6 +58,7 @@ namespace TsRandomizer.Randomisation
 		//pyramid
 		internal Gate TemporalGyre;
 		internal Gate LeftPyramid;
+		internal Gate NightmareDoor;
 		internal Gate Nightmare;
 
 		public new ItemLocation this[ItemKey key] => GetItemLocationBasedOnKeyOrRoomKey(key);
@@ -185,10 +186,13 @@ namespace TsRandomizer.Randomisation
 
 			//pyramid
 			TemporalGyre = MilitaryFortress & R.TimespinnerWheel;
-			LeftPyramid = UpperLab & (
-				R.TimespinnerWheel & R.TimespinnerSpindle &
-				R.TimespinnerPiece1 & R.TimespinnerPiece2 & R.TimespinnerPiece3);
-			Nightmare = LeftPyramid & R.UpwardDash;
+			LeftPyramid = (SeedOptions.OpenPyramid)
+				? UpperLab & (R.TimespinnerWheel & R.TimespinnerSpindle)
+				: UpperLab & (R.TimespinnerWheel & R.TimespinnerSpindle & R.TimespinnerPiece1 & R.TimespinnerPiece2 & R.TimespinnerPiece3);
+			NightmareDoor = LeftPyramid & R.UpwardDash;
+			Nightmare = (SeedOptions.OpenPyramid)
+				? NightmareDoor & R.TimespinnerPiece1 & R.TimespinnerPiece2 & R.TimespinnerPiece3
+				: NightmareDoor;
 		}
 
 		static int CalculateCapacity(SeedOptions options)
@@ -413,7 +417,7 @@ namespace TsRandomizer.Randomisation
 			Add(new ItemKey(16, 3, 88, 192), "Conviction guarded room", ItemProvider.Get(EItemType.MaxHP), LeftPyramid);
 			Add(new ItemKey(16, 22, 200, 192), "Pit secret room", ItemProvider.Get(EItemType.MaxAura), LeftPyramid & OculusRift);
 			Add(new ItemKey(16, 16, 1512, 144), "Regret chest", ItemProvider.Get(EInventoryRelicType.EssenceOfSpace), LeftPyramid & OculusRift);
-			Add(new ItemKey(16, 5, 136, 192), "Nightmare Door chest", ItemProvider.Get(EInventoryEquipmentType.SelenBangle), Nightmare);
+			Add(new ItemKey(16, 5, 136, 192), "Nightmare Door chest", ItemProvider.Get(EInventoryEquipmentType.SelenBangle), NightmareDoor);
 		}
 
 		void AddGyreItemLocations()

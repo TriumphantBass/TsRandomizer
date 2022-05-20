@@ -14,21 +14,22 @@ namespace TsRandomizer.LevelObjects.Other
 
 		protected override void Initialize(SeedOptions options)
 		{
-			if (AreTriggerConditionsMet()) return;
-
-			Dynamic.SilentKill();
+			if (!AreTriggerConditionsMet(options))
+				Dynamic.SilentKill();
+			Dynamic.DoCutscene();
 		}
 
-		bool AreTriggerConditionsMet()
+		bool AreTriggerConditionsMet(SeedOptions options)
 		{
 			var relics = Level.GameSave.Inventory.RelicInventory.Inventory;
 
 			return
 				relics.ContainsKey((int) EInventoryRelicType.TimespinnerWheel)
 				&& relics.ContainsKey((int)EInventoryRelicType.TimespinnerSpindle)
-				&& relics.ContainsKey((int)EInventoryRelicType.TimespinnerGear1)
-				&& relics.ContainsKey((int)EInventoryRelicType.TimespinnerGear2)
-				&& relics.ContainsKey((int)EInventoryRelicType.TimespinnerGear3);
+				&& (options.OpenPyramid ||
+					(relics.ContainsKey((int)EInventoryRelicType.TimespinnerGear1)
+					&& relics.ContainsKey((int)EInventoryRelicType.TimespinnerGear2)
+					&& relics.ContainsKey((int)EInventoryRelicType.TimespinnerGear3)));
 		}
 	}
 }
