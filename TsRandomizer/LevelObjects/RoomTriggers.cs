@@ -36,6 +36,8 @@ namespace TsRandomizer.LevelObjects
 		static readonly MethodInfo CreateAndCallCutsceneMethod = typeof(CutsceneBase).GetPrivateStaticMethod("CreateAndCallCutscene", CutsceneEnumType, typeof(Level), typeof(Point));
 		static readonly Type CirclePlatformType = TimeSpinnerType.Get("Timespinner.GameObjects.Events.Platforms.CirclePlatformEvent");
 		static readonly Type MovingPlatformType = TimeSpinnerType.Get("Timespinner.GameObjects.Events.Platforms.MovingPlatformEvent");
+		static readonly Type BossDoorEventType = TimeSpinnerType.Get("Timespinner.GameObjects.Events.Doors.BossDoorEvent");
+		static readonly Type TeleportEventType = TimeSpinnerType.Get("Timespinner.GameObjects.Events.Doors.TeleportEvent");
 
 
 		static int TargetBossId = -1;
@@ -257,6 +259,38 @@ namespace TsRandomizer.LevelObjects
 				// Clear final boss saves
 				level.GameSave.SetValue("TSRando_IsBossDead_Sandman", false);
 				level.GameSave.SetValue("TSRando_IsBossDead_Nightmare", false);
+
+				if (!(seedOptions.FastPyramid || seedOptions.EnterSandman))
+					return;
+
+				var bossDoor = ((Dictionary<int, GameEvent>)level.AsDynamic()._levelEvents).Values
+						.FirstOrDefault(obj => obj.GetType() == BossDoorEventType);
+				var bossTeleportEvent = ((Dictionary<int, GameEvent>)level.AsDynamic()._levelEvents).Values
+						.Where(obj => obj.GetType() == TeleportEventType)
+						.Single(te => te.AsDynamic().Direction == EDirection.West);
+				if (!seedOptions.EnterSandman)
+				{
+					// Is time unbroken? Then no door 4 u
+					if (!level.GameSave.HasCutsceneBeenTriggered("Alt2_Win"))
+					{
+						bossDoor.AsDynamic()._isLocked = true;
+						bossDoor.AsDynamic()._isDemonLocked = true;
+						bossTeleportEvent.SilentKill();
+					}
+				}
+				else
+				{
+					if (!(level.GameSave.HasRelic(EInventoryRelicType.TimespinnerWheel)
+						&& level.GameSave.HasRelic(EInventoryRelicType.TimespinnerSpindle)
+						&& level.GameSave.HasRelic(EInventoryRelicType.TimespinnerGear1)
+						&& level.GameSave.HasRelic(EInventoryRelicType.TimespinnerGear2)
+						&& level.GameSave.HasRelic(EInventoryRelicType.TimespinnerGear3)))
+					{
+						bossDoor.AsDynamic()._isLocked = true;
+						bossDoor.AsDynamic()._isDemonLocked = true;
+						bossTeleportEvent.SilentKill();
+					}
+				}
 			}));
 			RoomTriggers.Add(new RoomTrigger(16, 26, (level, itemLocation, seedOptions, gameSettings, screenManager) => {
 				// Nightmare
@@ -507,8 +541,7 @@ namespace TsRandomizer.LevelObjects
 				if (((Dictionary<int, NPCBase>)level.AsDynamic()._npcs).Values.Any(npc => npc.GetType() == GlowingFloorEventType)) return;
 				SpawnGlowingFloor(level);
 			}));
-			RoomTriggers.Add(new RoomTrigger(16, 27, (level, itemLocation, seedOptions,  gameSettings, screenManager) =>
-			{
+			RoomTriggers.Add(new RoomTrigger(16, 27, (level, itemLocation, seedOptions, gameSettings, screenManager) => {
 				// Post-Nightmare void
 				if (level.GameSave.GetSettings().BossRando.Value)
 				{
@@ -521,13 +554,14 @@ namespace TsRandomizer.LevelObjects
 				Client.SetStatus(ArchipelagoClientState.ClientGoal);
 				AskPermissionMessage(screenManager, "collect", Client.CollectPermissions);
 				AskPermissionMessage(screenManager, "forfeit", Client.ForfeitPermissions);
+
 			}));
 		}
 
 		static void AskPermissionMessage(ScreenManager screenManager, string command, Permissions permissionFlags)
 		{
 			if (!permissionFlags.HasFlag(Permissions.Auto) &&
-			    (permissionFlags.HasFlag(Permissions.Enabled) || permissionFlags.HasFlag(Permissions.Goal)))
+				(permissionFlags.HasFlag(Permissions.Enabled) || permissionFlags.HasFlag(Permissions.Goal)))
 			{
 				var messageBox = MessageBox.Create(screenManager, $"Press OK to {command} remaining item checks", _ => {
 					Client.Say($"!{command}");
