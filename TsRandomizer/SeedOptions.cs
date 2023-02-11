@@ -31,6 +31,7 @@ namespace TsRandomizer
 		public bool RisingTides => (Flags & 1 << 18) > 0;
 		public bool UnchainedKeys => (Flags & 1 << 19) > 0;
 		public bool TrappedChests => (Flags & 1 << 20) > 0;
+		public bool RiskyWarps => (Flags & 1 << 21) > 0;
 
 		public SeedOptions(uint flags)
 		{
@@ -63,7 +64,9 @@ namespace TsRandomizer
 				//Archipelago, automaticly set above
 				{"DadPercent", 1U << 17},
 				{"RisingTides", 1U << 18},
-				{"UnchainedKeys", 1U << 19}
+				{"UnchainedKeys", 1U << 19},
+				{"TrappedChests", 1U << 20},
+				{"RiskyWarps", 1U << 21},
 			};
 
 			foreach (var kvp in stringToFlagMapping)

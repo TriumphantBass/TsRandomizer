@@ -26,6 +26,7 @@ namespace TsRandomizer.Screens.SeedSelection
 			{ 1 << 18, new SeedOptionInfo { Name = "Rising Tides", Description = "Random areas are flooded or drained" } },
 			{ 1 << 19, new SeedOptionInfo { Name = "Unchained Keys", Description = "Start with Twin Pyramid Key, which does not give free warp; warp items for Past, Present, (and ??? with Enter Sandman) can be found." } },
 			{ 1 << 20, new SeedOptionInfo { Name = "Trapped Chests", Description = "Items can be traps. Toggle available traps in the 'Traps' settings." } },
+			{ 1 << 21, new SeedOptionInfo { Name = "Risky Warps", Description = "Expanded free-warp eligible locations, including Azure Queen, Xarion, Amadeus' Laboratory, and Emperor's Tower." } },
 			{ 1 << 13, new SeedOptionInfo { Name = "Tournament", Description = "Forces your settings to be the predefined tournament settings." } }
 		};
 

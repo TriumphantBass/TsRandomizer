@@ -190,14 +190,14 @@ namespace TsRandomizer.Randomisation
 			RightSideLibraryElevator = R.CardE & ((MidLibrary & (R.CardC | R.CardB)) | R.GateMilitaryGate | R.GateSealedSirensCave);
 			LowerRightSideLibrary = (MidLibrary & R.CardB) | RightSideLibraryElevator | R.GateMilitaryGate | (R.GateSealedSirensCave & R.CardE);
 			SealedCavesLeft = (AccessToLakeDesolation & (FloodsFlags.LakeDesolation ? R.None : R.DoubleJump)) | R.GateSealedCaves;
-			SealedCavesLower = SealedCavesLeft & R.CardA;
+			SealedCavesLower = R.GateXarion | SealedCavesLeft & R.CardA;
 			SealedCavesSirens = (MidLibrary & R.CardB & R.CardE) | R.GateSealedSirensCave;
 			MilitaryFortress = LowerRightSideLibrary & KillMaw & killTwins & killAelana;
-			MilitaryFortressHangar = MilitaryFortress;
+			MilitaryFortressHangar = R.GateLabEntrance | MilitaryFortress;
 			RightSideMilitaryFortressHangar = MilitaryFortressHangar & R.DoubleJump;
 			TheLab = MilitaryFortressHangar & R.CardB;
 			TheLabPoweredOff = TheLab & DoubleJumpOfNpc;
-			UpperLab = TheLabPoweredOff & ForwardDashDoubleJump;
+			UpperLab = R.GateDadsTower | TheLabPoweredOff & ForwardDashDoubleJump;
 			RavenlordsLair = UpperLab & R.MerchantCrow;
 			EmperorsTower = UpperLab;
 

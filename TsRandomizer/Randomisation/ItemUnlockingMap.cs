@@ -27,7 +27,8 @@ namespace TsRandomizer.Randomisation
 			if (!seed.Options.Inverted)
 			{
 				IEnumerable<TeleporterGate> pastTeleporterGates = PastTeleporterGates;
-
+				if (!seed.Options.RiskyWarps)
+					pastTeleporterGates = pastTeleporterGates.Where(g => g.Safe);
 				if (seed.FloodFlags.Maw)
 					pastTeleporterGates = pastTeleporterGates.Where(g => g.Gate != R.GateMaw);
 
@@ -54,12 +55,17 @@ namespace TsRandomizer.Randomisation
 		void SetUnchainedKeyPickupActions(Seed seed)
 		{
 			IEnumerable<TeleporterGate> pastTeleporterGates = PastTeleporterGates;
-
+			if (!seed.Options.RiskyWarps)
+				pastTeleporterGates = pastTeleporterGates.Where(g => g.Safe);
 			if (seed.FloodFlags.Maw)
 				pastTeleporterGates = pastTeleporterGates.Where(g => g.Gate != R.GateMaw);
 
+			IEnumerable<TeleporterGate> presentTeleporterGates = PresentTeleporterGates;
+			if (!seed.Options.RiskyWarps)
+				presentTeleporterGates = presentTeleporterGates.Where(g => g.Safe);
+
 			SetUnchainedKeysUnlock(Random, CustomItemType.TimewornWarpBeacon, pastTeleporterGates.ToArray());
-			SetUnchainedKeysUnlock(Random, CustomItemType.ModernWarpBeacon, PresentTeleporterGates);
+			SetUnchainedKeysUnlock(Random, CustomItemType.ModernWarpBeacon, presentTeleporterGates.ToArray());
 
 			if (seed.Options.EnterSandman)
 				SetUnchainedKeysUnlock(Random, CustomItemType.MysteriousWarpBeacon, PyramidTeleporterGates);
@@ -86,33 +92,35 @@ namespace TsRandomizer.Randomisation
 	{
 		protected static readonly TeleporterGate[] PresentTeleporterGates =
 		{
-			new TeleporterGate{Gate = R.GateKittyBoss, LevelId = 2, RoomId = 55, Name = "Sewers"},
-			new TeleporterGate{Gate = R.GateLeftLibrary, LevelId = 2, RoomId = 54, Name = "Library"},
-			new TeleporterGate{Gate = R.GateMilitaryGate, LevelId = 10, RoomId = 12, Name = "Military Hangar"},
-			new TeleporterGate{Gate = R.GateSealedCaves, LevelId = 9, RoomId = 50, Name = "Xarion's Cave Entrance"},
-			//new TeleporterGate{Gate = R.GateXarion, LevelId = 9, RoomId = 49}, //dont want to spawn infront of xarion
-			new TeleporterGate{Gate = R.GateSealedSirensCave, LevelId = 9, RoomId = 51, Name = "Sirens' Cave"},
-			new TeleporterGate{Gate = R.GateLakeDesolation, LevelId = 1, RoomId = 25, Name = "Lake Desolation"}
+			new TeleporterGate{Gate = R.GateKittyBoss, LevelId = 2, RoomId = 55, Name = "Sewers", Safe = true},
+			new TeleporterGate{Gate = R.GateLeftLibrary, LevelId = 2, RoomId = 54, Name = "Library", Safe = true},
+			new TeleporterGate{Gate = R.GateMilitaryGate, LevelId = 10, RoomId = 12, Name = "Military Hangar", Safe = true},
+			new TeleporterGate{Gate = R.GateSealedCaves, LevelId = 9, RoomId = 50, Name = "Xarion's Cave Entrance", Safe = true},
+			new TeleporterGate{Gate = R.GateXarion, LevelId = 9, RoomId = 49, Name = "Xarion's Lair", Safe = false},
+			new TeleporterGate{Gate = R.GateSealedSirensCave, LevelId = 9, RoomId = 51, Name = "Sirens' Cave", Safe = true},
+			new TeleporterGate{Gate = R.GateLakeDesolation, LevelId = 1, RoomId = 25, Name = "Lake Desolation", Safe = true}
 		};
 
 		protected static readonly TeleporterGate[] PastTeleporterGates =
 		{
-			//new TeleporterGate{Gate = Requirement.GateLakeSereneLeft, LevelId = 7, RoomId = 30}, //you dont want to spawn with a boss in your face
-			new TeleporterGate{Gate = R.GateLakeSereneRight, LevelId = 7, RoomId = 31, Name = "East Lake Serene"},
-			new TeleporterGate{Gate = R.GateAccessToPast, LevelId = 8, RoomId = 51, Name = "Upper Caves of Banishment"},
-			//new TeleporterGate{Gate = Requirement.GateAccessToPast, LevelId = 3, RoomId = 6}, //Refugee Camp, Somehow doesnt work ¯\_(ツ)_/¯
-			new TeleporterGate{Gate = R.GateCastleRamparts, LevelId = 4, RoomId = 23, Name = "Castle Ramparts"},
-			new TeleporterGate{Gate = R.GateCastleKeep, LevelId = 5, RoomId = 24, Name = "Castle Keep"},
-			new TeleporterGate{Gate = R.GateRoyalTowers, LevelId = 6, RoomId = 0, Name = "Royal Towers"},
-			new TeleporterGate{Gate = R.GateMaw, LevelId = 8, RoomId = 49, Name = "Maw's Lair"},
-			new TeleporterGate{Gate = R.GateCavesOfBanishment, LevelId = 8, RoomId = 50, Name = "Maw's Cave Entrance"}
+			new TeleporterGate{Gate = R.GateLakeSereneLeft, LevelId = 7, RoomId = 30, Name = "West Lake Serene", Safe = false},
+			new TeleporterGate{Gate = R.GateLakeSereneRight, LevelId = 7, RoomId = 31, Name = "East Lake Serene", Safe = true},
+			new TeleporterGate{Gate = R.GateAccessToPast, LevelId = 8, RoomId = 51, Name = "Upper Caves of Banishment", Safe = true},
+			new TeleporterGate{Gate = R.GateAccessToPast, LevelId = 3, RoomId = 6, Name = "Refugee Camp", Safe = true},
+			new TeleporterGate{Gate = R.GateCastleRamparts, LevelId = 4, RoomId = 23, Name = "Castle Ramparts", Safe = true},
+			new TeleporterGate{Gate = R.GateCastleKeep, LevelId = 5, RoomId = 24, Name = "Castle Keep", Safe = true},
+			new TeleporterGate{Gate = R.GateRoyalTowers, LevelId = 6, RoomId = 0, Name = "Royal Towers", Safe = true},
+			new TeleporterGate{Gate = R.GateMaw, LevelId = 8, RoomId = 49, Name = "Maw's Lair", Safe = true},
+			new TeleporterGate{Gate = R.GateCavesOfBanishment, LevelId = 8, RoomId = 50, Name = "Maw's Cave Entrance", Safe = true},
+			new TeleporterGate{Gate = R.GateLabEntrance, LevelId = 11, RoomId = 33, Name = "Amadeus' Laboratory", Safe = false},
+			new TeleporterGate{Gate = R.GateDadsTower, LevelId = 12, RoomId = 0, Name = "Emperor's Tower", Safe = false},
 		};
 
 		protected static readonly TeleporterGate[] PyramidTeleporterGates =
 		{
-			new TeleporterGate{Gate = R.GateGyre, LevelId = 14, RoomId = 1, Name = "Temporal Gyre Entrance"},
-			new TeleporterGate{Gate = R.GateLeftPyramid, LevelId = 16, RoomId = 12, Name = "Ancient Pyramid Entrance"},
-			new TeleporterGate{Gate = R.GateRightPyramid, LevelId = 16, RoomId = 19, Name = "Inner Ancient Pyramid"}
+			new TeleporterGate{Gate = R.GateGyre, LevelId = 14, RoomId = 1, Name = "Temporal Gyre Entrance", Safe = true},
+			new TeleporterGate{Gate = R.GateLeftPyramid, LevelId = 16, RoomId = 12, Name = "Ancient Pyramid Entrance", Safe = true},
+			new TeleporterGate{Gate = R.GateRightPyramid, LevelId = 16, RoomId = 19, Name = "Inner Ancient Pyramid", Safe = true}
 		};
 
 		protected readonly LookupDictionary<ItemIdentifier, UnlockingSpecification> UnlockingSpecifications;
@@ -213,6 +221,7 @@ namespace TsRandomizer.Randomisation
 			public int LevelId { get; internal set; }
 			public int RoomId { get; internal set; }
 			public string Name { get; internal set; }
+			public bool Safe { get; internal set; }
 		}
 	}
 }
