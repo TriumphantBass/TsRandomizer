@@ -105,12 +105,15 @@ namespace TsRandomizer.Randomisation
 			new TeleporterGate{Gate = R.GateSealedCaves, LevelId = 9, RoomId = 50, Safe = true},
 			new TeleporterGate{Gate = R.GateXarion, LevelId = 9, RoomId = 49, Safe = false},
 			new TeleporterGate{Gate = R.GateSealedSirensCave, LevelId = 9, RoomId = 51, Safe = true},
-			new TeleporterGate{Gate = R.GateLakeDesolation, LevelId = 1, RoomId = 25, Safe = true}
+			new TeleporterGate{Gate = R.GateLakeDesolation, LevelId = 1, RoomId = 25, Safe = true},
+			new TeleporterGate{Gate = R.GateLabEntrance, LevelId = 11, RoomId = 33, Safe = false},
+			new TeleporterGate{Gate = R.GateDadsTower, LevelId = 12, RoomId = 0, Safe = false},
 		};
 
 		protected static readonly TeleporterGate[] PastTeleporterGates =
 		{
 			new TeleporterGate{Gate = R.GateRefugeeCamp, LevelId = 3, RoomId = 6, Safe = true},
+			new TeleporterGate{Gate = R.GateLakeSereneLeft, LevelId = 7, RoomId = 30, Safe = false },
 			new TeleporterGate{Gate = R.GateLakeSereneRight, LevelId = 7, RoomId = 31, Safe = true},
 			new TeleporterGate{Gate = R.GateAccessToPast, LevelId = 8, RoomId = 51, Safe = true},
 			new TeleporterGate{Gate = R.GateCastleRamparts, LevelId = 4, RoomId = 23, Safe = true},
