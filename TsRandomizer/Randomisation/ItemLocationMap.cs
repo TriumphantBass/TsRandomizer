@@ -57,6 +57,7 @@ namespace TsRandomizer.Randomisation
 		internal Gate RavenlordsLair;
 		internal Gate MilitaryFortressHangar;
 		internal Gate RightSideMilitaryFortressHangar;
+		internal Gate TheLabEntrance;
 		internal Gate TheLab;
 		internal Gate TheLabPoweredOff;
 		internal Gate UpperLab;
@@ -206,8 +207,9 @@ namespace TsRandomizer.Randomisation
 			SealedCavesSirens = (MidLibrary & R.CardB & R.CardE) | R.GateSealedSirensCave;
 			MilitaryFortress = LowerRightSideLibrary & pastCleared;
 			MilitaryFortressHangar = MilitaryFortress & R.TimeStop;
-			RightSideMilitaryFortressHangar = MilitaryFortressHangar & (FloodsFlags.Lab ? R.Free : R.DoubleJump);
-			TheLab = RightSideMilitaryFortressHangar & R.CardB & NeedSwimming(FloodsFlags.Lab);
+			RightSideMilitaryFortressHangar = MilitaryFortressHangar & (FloodsFlags.Lab ? R.Free : R.DoubleJump | TheLabEntrance);
+			TheLabEntrance = RightSideMilitaryFortressHangar & NeedSwimming(FloodsFlags.Lab) | R.GateLabEntrance;
+			TheLab = TheLabEntrance & R.CardB;
 			TheLabPoweredOff = TheLab & DoubleJumpOfNpc;
 			UpperLab = EmperorsTower | TheLabPoweredOff & ForwardDashDoubleJump;
 			RavenlordsLair = UpperLab & R.MerchantCrow;
