@@ -209,9 +209,9 @@ namespace TsRandomizer.Randomisation
 			RightSideMilitaryFortressHangar = MilitaryFortressHangar & (FloodsFlags.Lab ? R.Free : R.DoubleJump);
 			TheLab = RightSideMilitaryFortressHangar & R.CardB & NeedSwimming(FloodsFlags.Lab);
 			TheLabPoweredOff = TheLab & DoubleJumpOfNpc;
-			UpperLab = TheLabPoweredOff & ForwardDashDoubleJump;
+			UpperLab = EmperorsTower | TheLabPoweredOff & ForwardDashDoubleJump;
 			RavenlordsLair = UpperLab & R.MerchantCrow;
-			EmperorsTower = UpperLab;
+			EmperorsTower = R.GateDadsTower | TheLabPoweredOff & ForwardDashDoubleJump;
 
 			//pyramid
 			var completeTimespinner = R.TimespinnerPiece1 & R.TimespinnerPiece2 & R.TimespinnerPiece3 & R.TimespinnerSpindle & R.TimespinnerWheel;
