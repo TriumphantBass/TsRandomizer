@@ -36,6 +36,7 @@ namespace TsRandomizer.Screens.SeedSelection
 			{ 1 << 27, new SeedOptionInfo { Name = "Royal Roadblock", Description = "The Royal Towers entrance door requires a royal orb (Plasma Orb, Plasma Geyser, or Royal Ring) to enter." } },
 			{ 1 << 28, new SeedOptionInfo { Name = "Pure Torcher", Description = "All lanterns contain checks. (Except tutorial)" } },
 			{ 1 << 29, new SeedOptionInfo { Name = "Find the Flame", Description = "Lanterns in 'Pure Torcher' will not break without new item 'Cube of Bodie'." } },
+			{ 1 << 30, new SeedOptionInfo { Name = "Lore Checks", Description = "The win condition requires completing a list of objectives. (Pause->Journal->Objectives)" } },
 		};
 
 		public SeedOptionsCollection(SeedOptions seedOptions)
