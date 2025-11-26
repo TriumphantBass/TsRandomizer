@@ -118,9 +118,9 @@ namespace TsRandomizer.Randomisation
 				default:
 					return new TaskDefinition
 					{
-						Name = String.Format("Placeholder Task {0}", taskId),
+						Name = $"Placeholder Task {taskId}",
 						Description = "Failed to generate task.",
-						SaveString = String.Format("TaskPlaceholder{0}", taskId)
+						SaveString = $"TaskPlaceholder{taskId}"
 					};
 			}
 		}

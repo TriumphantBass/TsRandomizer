@@ -276,12 +276,12 @@ namespace TsRandomizer.Screens
 
 			var checkTotal = itemLocationMap.Count;
 			var checksFound = itemLocationMap.Where(l => l.IsPickedUp).ToList().Count;
-			var statEntry = MenuEntry.Create(string.Format("Checks: {0}/{1}", checksFound, checkTotal), _ => { });
+			var statEntry = MenuEntry.Create($"Checks: {checksFound}/{checkTotal}", _ => { });
 			statEntry.IsCenterAligned = false;
 			menuEntryList.Add(statEntry.AsTimeSpinnerMenuEntry());
 
 			var bonkTotal = save.GetConcussionCount();
-			statEntry = MenuEntry.Create(string.Format("Celestial Sash Bonks: {0}", bonkTotal), _ => { });
+			statEntry = MenuEntry.Create($"Celestial Sash Bonks: {bonkTotal}", _ => { });
 			statEntry.IsCenterAligned = false;
 			menuEntryList.Add(statEntry.AsTimeSpinnerMenuEntry());
 
@@ -303,13 +303,22 @@ namespace TsRandomizer.Screens
 				menuEntry.AsDynamic().Text = "Goal: Dad Percent";
 				menuEntry.AsDynamic().Description = "Clear the boss fight at the top of Emperor's Tower.";
 			}
+
 			menuEntry.AsDynamic()._isUnlocked = save.GetSaveBool("TsRandoGoalCleared");
 
 			// Remove all extra feat entries
 			// Currently bonus objectives are not available, only goals
 			var bonusTaskCount = 0;
+			if (save.GetSeed().Value.GoalState == Goal.Neliste)
+			{
+				bonusTaskCount = 5;
+				menuEntry.AsDynamic().Text = "Goal: Neliste";
+				menuEntry.AsDynamic().Description = $"Clear {bonusTaskCount} of the following tasks and visit Neliste in the Refugee Camp";
+			}
 			while (((IList)selectedMenu.Entries).Count > bonusTaskCount + 1)
 				((IList)selectedMenu.Entries).RemoveAt(bonusTaskCount + 1);
+
+
 
 		}
 	}

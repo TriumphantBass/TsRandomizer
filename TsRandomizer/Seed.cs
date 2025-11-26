@@ -12,7 +12,8 @@ namespace TsRandomizer
 	public enum Goal
 	{
 		Nightmare,
-		DadPercent
+		DadPercent,
+		Neliste
 	}
 	struct Seed
 	{
