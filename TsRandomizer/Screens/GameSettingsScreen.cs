@@ -311,6 +311,7 @@ namespace TsRandomizer.Screens
 			var bonusTaskCount = 0;
 			if (save.GetSeed().Value.GoalState == Goal.Neliste)
 			{
+				// TODO set bounds
 				bonusTaskCount = 5;
 				menuEntry.AsDynamic().Text = "Goal: Neliste";
 				menuEntry.AsDynamic().Description = $"Clear {bonusTaskCount} of the following tasks and visit Neliste in the Refugee Camp";
@@ -318,8 +319,15 @@ namespace TsRandomizer.Screens
 			while (((IList)selectedMenu.Entries).Count > bonusTaskCount + 1)
 				((IList)selectedMenu.Entries).RemoveAt(bonusTaskCount + 1);
 
-
-
+			var tasks = TaskManager.GetTaskList(save.GetSeed().Value, bonusTaskCount);
+			for (int i = 0; i < tasks.Length; i++)
+			{
+				menuEntry = ((IList)selectedMenu.Entries)[i + 1];
+				var task = tasks[i];
+				menuEntry.AsDynamic().Text = task.Name;
+				menuEntry.AsDynamic().Description = task.Description;
+				menuEntry.AsDynamic()._isUnlocked = save.GetSaveBool(task.SaveString);
+			}
 		}
 	}
 }

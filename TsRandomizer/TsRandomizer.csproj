@@ -391,7 +391,7 @@
     <Compile Include="Settings\JsonSettingsContractResolver.cs" />
     <Compile Include="Settings\SettingCollection.cs" />
     <Compile Include="Settings\GameSettingObjects\SpriteGameSetting.cs" />
-    <Compile Include="TaskManager.cs" />
+    <Compile Include="Randomisation\TaskManager.cs" />
     <Compile Include="TimeSpinnerGame.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

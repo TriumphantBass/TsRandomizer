@@ -37,9 +37,12 @@ namespace TsRandomizer
 				StartingEra = Era.Pyramid;
 			else if (options.Inverted)
 				StartingEra = Era.Past;
-			GoalState = Goal.Nightmare;
-			if (options.DadPercent)
+			if (options.TaskMaster)
+				GoalState = Goal.Neliste;
+			else if (options.DadPercent)
 				GoalState = Goal.DadPercent;
+			else
+				GoalState = Goal.Nightmare;
 		}
 
 		public static Seed GenerateRandom(SeedOptions options, Random random)
