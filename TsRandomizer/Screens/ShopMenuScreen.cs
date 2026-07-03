@@ -41,6 +41,7 @@ namespace TsRandomizer.Screens
 				var shopMenu = ((IList)Dynamic._subMenuCollections)[i].AsDynamic();
 				var shopMenuEntries = shopMenu._items; // (List<this.ShopMenuEntryType>)shopMenu; // < Timespinner.GameStateManagement.Screens.Shop.ShopMenuEntry >
 
+				// populate from merchandise inventory instead TODO
 				var meyef = new ItemIdentifier(EInventoryFamiliarType.Meyef);
 				var newItem = new InventoryFamiliar(EInventoryFamiliarType.Meyef, null)
 				{
