@@ -27,7 +27,7 @@ namespace TsRandomizer.LevelObjects.Other
 			merchandiseInventory.AddItem(EInventoryOrbType.Gun, EOrbSlot.Passive);
 			merchandiseInventory.AddItem(EInventoryUseItemType.HiSandBottle);
 			merchandiseInventory.AddItem(EInventoryEquipmentType.SecurityVisor);
-			Dynamic.OpenShop(NPCBase.ENPCType.CultistPriest, merchandiseInventory);
+			Dynamic.OpenShop(NPCBase.ENPCType.Quartermaster, merchandiseInventory);
 		}
 	}
 }
