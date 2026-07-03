@@ -39,22 +39,53 @@ namespace TsRandomizer.Screens
 			foreach (var i in Enumerable.Range(0, ((IList)Dynamic._subMenuCollections).Count - 1))
 			{
 				var shopMenu = ((IList)Dynamic._subMenuCollections)[i].AsDynamic();
-				var shopMenuEntries = shopMenu._items; // (List<this.ShopMenuEntryType>)shopMenu; // < Timespinner.GameStateManagement.Screens.Shop.ShopMenuEntry >
 
-				// populate from merchandise inventory instead TODO
-				var meyef = new ItemIdentifier(EInventoryFamiliarType.Meyef);
-				var newItem = new InventoryFamiliar(EInventoryFamiliarType.Meyef, null)
+				// Populate types that aren't handled in the vanilla game.
+				// TODO make this in its own function
+				if (i == 0 && shopMenu._isBuying) {
+					var shopMenuEntries = shopMenu._items; // (List<this.ShopMenuEntryType>)shopMenu; // < Timespinner.GameStateManagement.Screens.Shop.ShopMenuEntry >
+														   // populate from merchandise inventory instead TODO
+														   // Dynamic._merchandiseInventory
+														   // TODO Move to orb inventory
+					var familiars = Dynamic._merchandiseInventory.FamiliarInventory;
+					// TODO: handle stats
+
+					foreach (var familiar in familiars.Inventory)
+					{
+						var newMenuEntry = ShopMenuEntryType.CreateInstance(false, (InventoryFamiliar)familiar.Value, EInventoryCategoryType.Familiar);
+
+						var newEntries = (IList)shopMenuEntries;
+						newEntries.Add(newMenuEntry);
+						shopMenu._items = newEntries.ToList(ShopMenuEntryType);
+						var mainMenuEntry = newEntries.ToList(MainMenuEntryType)[newEntries.Count - 1];
+						((IList)shopMenu.Entries).Add(mainMenuEntry);
+					}
+
+				}
+				// TODO make this in its own function
+				// TODO check that this is an orb menu
+				if (i == 1 && shopMenu._isBuying)
 				{
-					Experience = 1000,
-				};
-				var newMenuEntry = ShopMenuEntryType.CreateInstance(false, newItem, EInventoryCategoryType.Familiar);
+					var shopMenuEntries = shopMenu._items; // (List<this.ShopMenuEntryType>)shopMenu; // < Timespinner.GameStateManagement.Screens.Shop.ShopMenuEntry >
+														   // populate from merchandise inventory instead TODO
+														   // Dynamic._merchandiseInventory
+														   // TODO Move to orb inventory
+					var orbs = Dynamic._merchandiseInventory.OrbInventory;
+					foreach (var orb in orbs.Inventory)
+					{
+						// Ignore non-melee orbs, vanilla logic already populates them
+						if (orb.Value.IsSpellUnlocked || orb.Value.IsPassiveUnlocked)
+							continue;
 
-				var newEntries = (IList)shopMenuEntries;
-				newEntries.Add(newMenuEntry);
-				// +		Entries	Count = 1	System.Collections.Generic.IList<Timespinner.GameStateManagement.MenuEntry> {System.Collections.Generic.List<Timespinner.GameStateManagement.MenuEntry>}
-				shopMenu._items = newEntries.ToList(ShopMenuEntryType);
-				var mainMenuEntry = newEntries.ToList(MainMenuEntryType)[1];
-				((IList)shopMenu.Entries).Add(mainMenuEntry);
+						var newMenuEntry = ShopMenuEntryType.CreateInstance(false, (InventoryOrb)orb.Value, EOrbSlot.Melee);
+
+						var newEntries = (IList)shopMenuEntries;
+						newEntries.Add(newMenuEntry);
+						shopMenu._items = newEntries.ToList(ShopMenuEntryType);
+						var mainMenuEntry = newEntries.ToList(MainMenuEntryType)[newEntries.Count - 1];
+						((IList)shopMenu.Entries).Add(mainMenuEntry);
+					}
+				}
 
 				foreach (var shopMenuEntry in shopMenu._items)
 				{
@@ -75,29 +106,7 @@ namespace TsRandomizer.Screens
 						currentPrice = dynamicShopMenuEntry.ShopPrice;
 					}
 					dynamicShopMenuEntry.ShopPrice = (int)(currentPrice * gameSettings.ShopMultiplier.Value);
-
-					// dynamicShopMenuEntry.ItemType = EInventoryCategoryType.Familiar;
-					// dynamicShopMenuEntry.Item = new ItemIdentifier(EInventoryFamiliarType.Meyef);
 				}
-				/*shopMenu._items.AsDyna
-
-				var entries = ((IList)Dynamic.MenuEntries)
-				.Cast<object>()
-				.Concat(menuEntry.AsTimeSpinnerMenuEntry())
-				.ToList(MainMenuEntryType)
-
-				this._relicMenuEntry = new MenuEntry(Loc.Get("shop_relics_header"))
-				{
-					Description = str
-				};
-				this._relicMenuEntry.Selected += new EventHandler<PlayerIndexEventArgs>(this.ItemMenuEntrySelected);
-				this.MenuEntries.Add(this._relicMenuEntry);
-				ShopMenuEntryCollection menuEntryCollection = new ShopMenuEntryCollection(this._shopPriceModifier, new Action<ShopMenuEntry>(this.OnItemSelected), this.GCM.SpPauseMenu, this._isBuying);
-				menuEntryCollection.AddEntries((IEnumerable<InventoryItem>)this._merchandiseInventory.RelicInventory.Inventory.Values, EInventoryCategoryType.Relic);
-				this._categoryMenuCollections.Add(menuEntryCollection);
-				this._subMenuCollections.Add((MenuEntryCollection)menuEntryCollection);
-
-				((object)Dynamic._primaryMenuCollection).AsDynamic()._entries = entries;*/
 			}
 		}
 	}
