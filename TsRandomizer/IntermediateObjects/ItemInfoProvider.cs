@@ -40,7 +40,7 @@ namespace TsRandomizer.IntermediateObjects
 				case LootType.ConstFamiliar: return Get((EInventoryFamiliarType)identifier.ItemId);
 				case LootType.ConstOrb: return Get((EInventoryOrbType)identifier.ItemId, (EOrbSlot)identifier.SubItemId);
 				case LootType.ConstRelic: return Get((EInventoryRelicType)identifier.ItemId);
-				case LootType.ConstStat: return Get((EItemType)identifier.ItemId);
+				// case LootType.ConstStat: return Get((EItemType)identifier.ItemId);
 				case LootType.ConstUseItem: return Get((EInventoryUseItemType)identifier.ItemId);
 				default: throw new ArgumentOutOfRangeException($"Loottype {identifier.LootType} is not supported");
 			}

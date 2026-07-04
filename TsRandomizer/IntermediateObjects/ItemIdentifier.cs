@@ -78,7 +78,7 @@ namespace TsRandomizer.IntermediateObjects
 
 		public ItemIdentifier(EItemType stat)
 		{
-			LootType = LootType.Stat;
+			LootType = LootType.UseItem; // LootType.Stat;
 			ItemId = (int)stat;
 		}
 
@@ -94,27 +94,10 @@ namespace TsRandomizer.IntermediateObjects
 					return (int)GetIconFromFamiliarMethod.InvokeStatic(Familiar) - 1;
 				case LootType.ConstRelic:
 					return (int)GetIconFromRelicMethod.InvokeStatic(Relic) - 1;
-				case LootType.ConstStat:
-					return GetIconFromStat();
 				case LootType.ConstUseItem:
 					return (int)GetIconFromUseItemMethod.InvokeStatic(UseItem) - 1;
 				default:
 					throw new ArgumentOutOfRangeException($"LootType {LootType} isnt a valid loot type");
-			}
-		}
-
-		int GetIconFromStat()
-		{
-			switch (Stat)
-			{
-				case EItemType.MaxHP:
-					return 24;
-				case EItemType.MaxAura:
-					return 25;
-				case EItemType.MaxSand:
-					return 26;
-				default:
-					throw new ArgumentOutOfRangeException($"Stat {Stat} isnt a valid stat boost type");
 			}
 		}
 
@@ -182,8 +165,10 @@ namespace TsRandomizer.IntermediateObjects
 						default:
 							throw new NotImplementedException($"Loottype {OrbSlot}.ToString() isnt implemented");
 					}
+				/*
 				case LootType.ConstStat:
 					return Stat.ToString();
+				*/
 				default:
 					throw new NotImplementedException($"Loottype {LootType}.ToString() isnt implemented");
 			}

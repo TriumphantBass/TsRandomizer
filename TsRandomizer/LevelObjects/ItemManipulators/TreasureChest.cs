@@ -46,6 +46,8 @@ namespace TsRandomizer.LevelObjects.ItemManipulators
 				case LootType.ConstFamiliar:
 					Dynamic._lootFamiliarType = ItemInfo.Identifier.Familiar;
 					break;
+				// TODO look into this manipulator here
+				/* 
 				case LootType.ConstStat:
 					switch (ItemInfo.Identifier.Stat)
 					{
@@ -62,6 +64,7 @@ namespace TsRandomizer.LevelObjects.ItemManipulators
 							throw new ArgumentOutOfRangeException();
 					}
 					break;
+				*/
 				default:
 					throw new ArgumentOutOfRangeException(nameof(ItemInfo.Identifier.LootType), ItemInfo.Identifier.LootType, $"lootType cannot be droppd by {nameof(TreasureChest)}");
 			}

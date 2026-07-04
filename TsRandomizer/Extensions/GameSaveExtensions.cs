@@ -207,7 +207,7 @@ namespace TsRandomizer.Extensions
 			gameSave.DataKeyBools[FamiliarPrefixKey + (int)familiar] = true;
 		}
 
-		static void AddStat(this GameSave gameSave, Level level, EItemType stat)
+		internal static void AddStat(this GameSave gameSave, Level level, EItemType stat)
 		{
 			if (level.MainHero == null) return;
 
@@ -253,9 +253,6 @@ namespace TsRandomizer.Extensions
 					break;
 				case LootType.ConstFamiliar:
 					gameSave.AddFamiliar(itemInfo.Familiar);
-					break;
-				case LootType.ConstStat:
-					gameSave.AddStat(level, itemInfo.Stat);
 					break;
 				default:
 					throw new ArgumentOutOfRangeException($"LootType {itemInfo.LootType} isnt suppored yet");

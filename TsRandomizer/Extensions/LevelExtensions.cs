@@ -30,29 +30,8 @@ namespace TsRandomizer.Extensions
 				case LootType.ConstUseItem:
 					level.AddScript((ScriptAction)typeof(ScriptAction).CreateInstance(true, itemIdentifier.UseItem, 1));
 					break;
-				case LootType.ConstStat:
-					RequestToastPopupForStats(level, itemIdentifier);
-					break;
 				default:
 					throw new NotImplementedException($"RelicOrOrbGetPopup is not implemented for LootType {itemIdentifier.LootType}");
-			}
-		}
-
-		internal static void RequestToastPopupForStats(this Level level, ItemIdentifier itemIdentifier)
-		{
-			switch (itemIdentifier.Stat)
-			{
-				case EItemType.MaxHP:
-					level.AsDynamic().RequestToastPopup(ToasterType.GetEnumValue("Health"), 0);
-					break;
-				case EItemType.MaxAura:
-					level.AsDynamic().RequestToastPopup(ToasterType.GetEnumValue("Aura"), 0);
-					break;
-				case EItemType.MaxSand:
-					level.AsDynamic().RequestToastPopup(ToasterType.GetEnumValue("Sand"), 0);
-					break;
-				default:
-					throw new ArgumentOutOfRangeException();
 			}
 		}
 

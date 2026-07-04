@@ -194,8 +194,8 @@ namespace TsRandomizer.Archipelago
 				{1337176, new ItemIdentifier(EInventoryOrbType.Moon, EOrbSlot.Passive)},
 				{1337177, new ItemIdentifier(EInventoryOrbType.Nether, EOrbSlot.Passive)},
 				{1337178, new ItemIdentifier(EInventoryOrbType.Barrier, EOrbSlot.Passive)},
-				{1337179, new ItemIdentifier(EItemType.MaxHP)},
-				{1337180, new ItemIdentifier(EItemType.MaxAura)},
+				{1337179, CustomItem.GetIdentifier(CustomItemType.HpUp)},
+				{1337180, CustomItem.GetIdentifier(CustomItemType.AuraUp)},
 
 				{1337181, CustomItem.GetIdentifier(CustomItemType.TimewornWarpBeacon)},
 				{1337182, CustomItem.GetIdentifier(CustomItemType.ModernWarpBeacon)},
@@ -221,7 +221,7 @@ namespace TsRandomizer.Archipelago
 
 				// 1337203 - 1337248 Reserved for future use
 
-        {1337249, new ItemIdentifier(EItemType.MaxSand)}
+				{1337249, CustomItem.GetIdentifier(CustomItemType.SandUp)}
 			};
 
 			MapItemIdentifierToItemId = new Dictionary<ItemIdentifier, long>(MapItemIdToItemItemIdentifier.Count);
