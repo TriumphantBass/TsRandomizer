@@ -107,7 +107,7 @@ namespace TsRandomizer.Settings
 			new List<string> { "Default", "Random", "Vanilla", "Empty" }, "Default", true);
 
 		public NumberGameSetting ShopMultiplier = new NumberGameSetting("Shop Price Multiplier",
-			"Multiplier for the cost of items in the shop. Set to 0 for free shops", 0, 10, 1, 1);
+			"Multiplier for the cost of items in the shop. Set to 0 for free shops", 0, 10, 1, 1, true);
 
 		public OnOffGameSetting ShopWarpShards = new OnOffGameSetting("Always Sell Warp Shards",
 			"Shops always sell warp shards (when keys possessed), ignoring inventory setting.", false);
