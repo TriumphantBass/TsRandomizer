@@ -241,10 +241,10 @@ namespace TsRandomizer.RoomTriggers
 					enemy.SilentKill();
 		}
 
-		public static void CreateAndCallCutScene(RoomState roomStat, string cutSceneName)
+		public static void CreateAndCallCutScene(RoomState roomState, string cutSceneName)
 		{
 			var enumValue = CutsceneEnumType.GetEnumValue(cutSceneName);
-			CreateAndCallCutsceneMethod.InvokeStatic(enumValue, roomStat.Level, new Point(200, 200));
+			CreateAndCallCutsceneMethod.InvokeStatic(enumValue, roomState.Level, new Point(200, 200));
 		}
 	}
 }

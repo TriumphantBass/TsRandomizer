@@ -33,7 +33,10 @@ namespace TsRandomizer.IntermediateObjects.CustomItems
 		CubeOfBodie,
 		SpiderTrap,
 		LightsOutTrap,
-		PalmPunchTrap
+		PalmPunchTrap,
+		HpUp,
+		AuraUp,
+		SandUp
 	}
 
 	// consider beacons as starting items

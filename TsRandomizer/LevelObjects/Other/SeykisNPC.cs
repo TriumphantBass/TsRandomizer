@@ -31,6 +31,7 @@ namespace TsRandomizer.LevelObjects.Other
 
 			merchandiseInventory.AsDynamic()._useItemInventory.AddItem((int)CustomItem.GetIdentifier(CustomItemType.NeurotoxinTrap).ItemId);
 			merchandiseInventory.AsDynamic()._useItemInventory.AddItem((int)CustomItem.GetIdentifier(CustomItemType.CubeOfBodie).ItemId);
+			merchandiseInventory.AsDynamic()._useItemInventory.AddItem((int)CustomItem.GetIdentifier(CustomItemType.SandUp).ItemId);
 			Dynamic.OpenShop(NPCBase.ENPCType.Quartermaster, merchandiseInventory);
 		}
 	}
