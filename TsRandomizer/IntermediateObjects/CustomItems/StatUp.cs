@@ -13,6 +13,7 @@ using System.Collections.Generic;
 using Newtonsoft.Json;
 using Timespinner.GameAbstractions.Saving;
 using TsRandomizer.Settings;
+using System.Reflection;
 
 
 namespace TsRandomizer.IntermediateObjects.CustomItems
@@ -30,7 +31,6 @@ namespace TsRandomizer.IntermediateObjects.CustomItems
 		internal override void OnPickup(Level level, GameplayScreen gameplayScreen)
 		{
 			base.OnPickup(level, gameplayScreen);
-			// TODO: use existing stat items for this
 		} 
 	}
 	

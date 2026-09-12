@@ -61,9 +61,6 @@ namespace TsRandomizer.IntermediateObjects
 		public virtual ItemInfo Get(EInventoryFamiliarType familiarItem) =>
 			GetOrAdd(familierItems, familiarItem, () => CreateNew(new ItemIdentifier(familiarItem)));
 
-		public virtual ItemInfo Get(EItemType stat) =>
-			GetOrAdd(statItems, stat, () => CreateNew(new ItemIdentifier(stat)));
-
 		static int GetOrbKey(EInventoryOrbType orbType, EOrbSlot orbSlot) => ((int)orbType * 10) + (int)orbSlot;
 
 		ItemInfo CreateNew(ItemIdentifier identifier) => new SingleItemInfo(unlockingMap, identifier);

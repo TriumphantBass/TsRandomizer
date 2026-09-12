@@ -15,6 +15,14 @@ namespace TsRandomizer.IntermediateObjects
 		Rare = 3,
 		UltraRare = 2,
 	}
+
+	public enum EStatType
+	{
+		MaxHpUp,
+		MaxAuraUp,
+		MaxSandUp
+	}
+
 	public class ItemIdentifier : IEquatable<ItemIdentifier>
 	{
 		public LootType LootType { get; }
@@ -49,6 +57,7 @@ namespace TsRandomizer.IntermediateObjects
 		{
 			LootType = LootType.UseItem;
 			ItemId = (int)useItem;
+			// TODO look into replicating stat type/extending for traps too
 		}
 
 		public ItemIdentifier(EInventoryRelicType relicType)
@@ -74,12 +83,6 @@ namespace TsRandomizer.IntermediateObjects
 		{
 			LootType = LootType.Familiar;
 			ItemId = (int)familiar;
-		}
-
-		public ItemIdentifier(EItemType stat)
-		{
-			LootType = LootType.UseItem; // LootType.Stat;
-			ItemId = (int)stat;
 		}
 
 		public int GetAnimationIndex()
