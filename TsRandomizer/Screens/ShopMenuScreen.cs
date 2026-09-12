@@ -97,13 +97,22 @@ namespace TsRandomizer.Screens
 						item.IsSellable = false;
 						dynamicShopMenuEntry.ShopPrice = -1;
 					}
-					
+					// TODO only limit progression items like this
+					// item.Category = InventoryRelic;
+
 					int currentPrice = dynamicShopMenuEntry.ShopPrice;
 					if (currentPrice == 0)
 					{
 						// Set a price for "priceless" items
 						dynamicShopMenuEntry.ShopPrice = 2000;
 						currentPrice = dynamicShopMenuEntry.ShopPrice;
+					}
+					// Custom Items
+					if (item.Key > 500 && item.Category == EInventoryCategoryType.UseItem)
+					{
+						dynamicShopMenuEntry.IsAvailable = false;
+						// TODO: check for what the shop slots actually are, not just custom items; figure out how to restrict the quantity
+						// dynamicShopMenuEntry.Item.Category = EInventoryCategoryType.Relic;
 					}
 					dynamicShopMenuEntry.ShopPrice = (int)(currentPrice * gameSettings.ShopMultiplier.Value);
 				}
