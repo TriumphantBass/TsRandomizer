@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using Timespinner.GameAbstractions.Inventory;
 using Timespinner.GameObjects.BaseClasses;
 using TsRandomizer.Extensions;
 using TsRandomizer.IntermediateObjects;
@@ -61,7 +62,7 @@ namespace TsRandomizer.LevelObjects.ItemManipulators
 			originalRadius = Dynamic._glowRadius;
 
 			// Cube-blocked
-			if (seed.Options.FindTheFlame && !Level.GameSave.HasItem(CustomItem.GetIdentifier(CustomItemType.CubeOfBodie)))
+			if (seed.Options.FindTheFlame && !Level.GameSave.HasRelicEnabled((EInventoryRelicType)CustomItemType.CubeOfBodie))
 			{
 				Dynamic._isAffectedByTime = true;
 				Dynamic._isFrozen = true;

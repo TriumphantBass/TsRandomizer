@@ -1,5 +1,6 @@
 ﻿using System;
 using Microsoft.Xna.Framework;
+using Timespinner.GameAbstractions.Inventory;
 using Timespinner.GameObjects.BaseClasses;
 using TsRandomizer.Extensions;
 using TsRandomizer.IntermediateObjects;
@@ -34,10 +35,10 @@ namespace TsRandomizer.LevelObjects.Other
 			if (!seed.Options.LockKeyAmadeus)
 				return;
 
-			if ((Level.RoomID == 1 && Level.GameSave.HasItem(CustomItem.GetIdentifier(CustomItemType.LabAccessExperiment))) ||
-			    (Level.RoomID == 35 && Level.GameSave.HasItem(CustomItem.GetIdentifier(CustomItemType.LabAccessGenza))) ||
-			    (Level.RoomID == 37 && Level.GameSave.HasItem(CustomItem.GetIdentifier(CustomItemType.LabAccessResearch))) ||
-			    (Level.RoomID == 39 && Level.GameSave.HasItem(CustomItem.GetIdentifier(CustomItemType.LabAccessDynamo))))
+			if ((Level.RoomID == 1 && Level.GameSave.HasRelicEnabled((EInventoryRelicType)CustomItemType.LabAccessExperiment)) ||
+			    (Level.RoomID == 35 && Level.GameSave.HasRelicEnabled((EInventoryRelicType)CustomItemType.LabAccessGenza)) ||
+			    (Level.RoomID == 37 && Level.GameSave.HasRelicEnabled((EInventoryRelicType)CustomItemType.LabAccessResearch)) ||
+			    (Level.RoomID == 39 && Level.GameSave.HasRelicEnabled((EInventoryRelicType)CustomItemType.LabAccessDynamo)))
 			{
 				Dynamic.SilentKill();
 

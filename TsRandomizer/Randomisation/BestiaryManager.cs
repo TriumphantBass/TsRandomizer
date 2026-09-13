@@ -770,9 +770,9 @@ namespace TsRandomizer.Randomisation
 			
 			if (level.GameSave.GetSeed().Value.Options.PrismBreak)
 			{
-				bool laserA = level.GameSave.HasItem(CustomItem.GetIdentifier(CustomItemType.LaserAccessA));
-				bool laserI = level.GameSave.HasItem(CustomItem.GetIdentifier(CustomItemType.LaserAccessI));
-				bool laserM = level.GameSave.HasItem(CustomItem.GetIdentifier(CustomItemType.LaserAccessM));
+				bool laserA = level.GameSave.HasRelicEnabled((EInventoryRelicType)CustomItemType.LaserAccessA);
+				bool laserI = level.GameSave.HasRelicEnabled((EInventoryRelicType)CustomItemType.LaserAccessI);
+				bool laserM = level.GameSave.HasRelicEnabled((EInventoryRelicType)CustomItemType.LaserAccessM);
 				// Only override the individual lasers if in the hangar
 				if(level.ID == 10)
 				{

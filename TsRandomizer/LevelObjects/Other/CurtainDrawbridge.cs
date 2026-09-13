@@ -1,4 +1,5 @@
-﻿using Timespinner.GameObjects.BaseClasses;
+﻿using Timespinner.GameAbstractions.Inventory;
+using Timespinner.GameObjects.BaseClasses;
 using TsRandomizer.Extensions;
 using TsRandomizer.IntermediateObjects;
 using TsRandomizer.IntermediateObjects.CustomItems;
@@ -17,7 +18,7 @@ namespace TsRandomizer.LevelObjects.Other
 
 		protected override void Initialize(Seed seed, SettingCollection settings)
 		{
-			if (!(!LevelReflected.GetLevelSaveBool("HasWinchBeenUsed") ? seed.Options.GateKeep && !Level.GameSave.HasItem(CustomItem.GetIdentifier(CustomItemType.DrawbridgeKey)) : LevelReflected.GetLevelSaveBool("IsDrawbridgeRaised")))
+			if (!(!LevelReflected.GetLevelSaveBool("HasWinchBeenUsed") ? seed.Options.GateKeep && !Level.GameSave.HasRelicEnabled((EInventoryRelicType)CustomItemType.DrawbridgeKey) : LevelReflected.GetLevelSaveBool("IsDrawbridgeRaised")))
 			{
 				Dynamic._isEngineerDead = true;
 				Dynamic._isRaising = true;
