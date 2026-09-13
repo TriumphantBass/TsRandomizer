@@ -10,6 +10,7 @@ namespace TsRandomizer.IntermediateObjects.CustomItems
 		public override int AnimationIndex => 46;
 
 		protected override bool RemoveFromInventory => false;
+		protected override EInventoryCategoryType ItemCategory => EInventoryCategoryType.Relic;
 
 		public LaserAccessKey(ItemUnlockingMap unlockingMap, CustomItemType itemType) : base(unlockingMap, itemType)
 		{

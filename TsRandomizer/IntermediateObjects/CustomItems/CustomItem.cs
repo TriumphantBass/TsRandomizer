@@ -43,9 +43,10 @@ namespace TsRandomizer.IntermediateObjects.CustomItems
 
 	abstract class CustomItem : SingleItemInfo
 	{
-		protected static string GetNameKey(CustomItemType itemType) => $"inv_use_{(int)itemType}";
+		// TODO: need to support rel_, use_, and others
+		protected static string GetNameKey(CustomItemType itemType) => $"inv_rel_{(int)itemType}";
 
-		protected static string GetDescriptionKey(CustomItemType itemType) => $"inv_use_{(int)itemType}_desc";
+		protected static string GetDescriptionKey(CustomItemType itemType) => $"inv_rel_{(int)itemType}_desc";
 
 		public static void SetDescription(CustomItemType type, string description, string speaker) =>
 			TimeSpinnerGame.Localizer.OverrideKey(GetDescriptionKey(type), description, speaker);
@@ -85,6 +86,7 @@ namespace TsRandomizer.IntermediateObjects.CustomItems
 		}
 
 		public override int AnimationIndex => 28; //purple star, default for custom items, otherwise they be invisible (-1)
+		protected virtual EInventoryCategoryType ItemCategory => EInventoryCategoryType.UseItem;
 
 		static string GetName(CustomItemType itemType) => string.Join(" ", Regex.Split(itemType.ToString(), @"(?<!^)(?=[A-Z])"));
 

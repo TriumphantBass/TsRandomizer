@@ -21,7 +21,6 @@ namespace TsRandomizer.IntermediateObjects.CustomItems
 	abstract class StatUp : CustomItem
 	{
 		public static readonly Type ToasterType = TimeSpinnerType.Get("Timespinner.GameStateManagement.Screens.InGame.EToastType");
-
 		protected override bool RemoveFromInventory => true;
 
 		public StatUp(ItemUnlockingMap unlockingMap, CustomItemType itemType) : base(unlockingMap, itemType)

@@ -22,17 +22,22 @@ namespace TsRandomizer.LevelObjects.Other
 		{
 			merchandiseInventory.AddItem(EInventoryRelicType.TimespinnerGear3);
 			merchandiseInventory.AddItem(EInventoryEquipmentType.Sunglasses);
-			merchandiseInventory.AddItem(EInventoryFamiliarType.Meyef);
+			merchandiseInventory.AddItem(EInventoryFamiliarType.Meyef); // TODO: needs inventory limit
 			merchandiseInventory.AddItem(EInventoryOrbType.Flame, EOrbSlot.Melee);
 			merchandiseInventory.AddItem(EInventoryOrbType.Barrier, EOrbSlot.Spell);
 			merchandiseInventory.AddItem(EInventoryOrbType.Gun, EOrbSlot.Passive);
 			merchandiseInventory.AddItem(EInventoryUseItemType.HiSandBottle);
 			merchandiseInventory.AddItem(EInventoryEquipmentType.SecurityVisor);
 
-			merchandiseInventory.AsDynamic()._useItemInventory.AddItem((int)CustomItem.GetIdentifier(CustomItemType.NeurotoxinTrap).ItemId);
-			merchandiseInventory.AsDynamic()._useItemInventory.AddItem((int)CustomItem.GetIdentifier(CustomItemType.CubeOfBodie).ItemId);
+			// Custom use items
+			merchandiseInventory.AsDynamic()._useItemInventory.AddItem((int)CustomItem.GetIdentifier(CustomItemType.NeurotoxinTrap).ItemId); // TODO: need to figure out how to fire
 			merchandiseInventory.AsDynamic()._useItemInventory.AddItem((int)CustomItem.GetIdentifier(CustomItemType.SandUp).ItemId);
-			merchandiseInventory.AsDynamic()._useItemInventory.AddItem((int)CustomItem.GetIdentifier(CustomItemType.MysteriousWarpBeacon).ItemId);
+
+			// Custom relics
+			merchandiseInventory.AsDynamic()._relicInventory.AddItem((int)CustomItem.GetIdentifier(CustomItemType.CubeOfBodie).ItemId);
+			merchandiseInventory.AsDynamic()._relicInventory.AddItem((int)CustomItem.GetIdentifier(CustomItemType.MysteriousWarpBeacon).ItemId);
+
+
 			Dynamic.OpenShop(NPCBase.ENPCType.Quartermaster, merchandiseInventory);
 		}
 	}

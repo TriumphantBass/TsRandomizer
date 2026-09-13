@@ -1,4 +1,5 @@
 ﻿using Timespinner.GameAbstractions.Gameplay;
+using Timespinner.GameAbstractions.Inventory;
 using TsRandomizer.Randomisation;
 using TsRandomizer.Screens;
 
@@ -9,6 +10,7 @@ namespace TsRandomizer.IntermediateObjects.CustomItems
 		public override int AnimationIndex => 236;
 
 		protected override bool RemoveFromInventory => false;
+		protected override EInventoryCategoryType ItemCategory => EInventoryCategoryType.Relic;
 
 		public DrawbridgeKey(ItemUnlockingMap unlockingMap) : base(unlockingMap, CustomItemType.DrawbridgeKey)
 		{
