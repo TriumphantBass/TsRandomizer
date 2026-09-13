@@ -12,7 +12,7 @@ namespace TsRandomizer.IntermediateObjects.CustomItems
 {
 	public enum CustomItemType
 	{
-		ArchipelagoItem,
+		ArchipelagoItem = 500,
 		MeteorSparrowTrap,
 		NeurotoxinTrap,
 		ChaosTrap,
@@ -43,17 +43,15 @@ namespace TsRandomizer.IntermediateObjects.CustomItems
 
 	abstract class CustomItem : SingleItemInfo
 	{
-		const int Offset = 500;
+		protected static string GetNameKey(CustomItemType itemType) => $"inv_use_{(int)itemType}";
 
-		protected static string GetNameKey(CustomItemType itemType) => $"inv_use_{(int)itemType + Offset}";
-
-		protected static string GetDescriptionKey(CustomItemType itemType) => $"inv_use_{(int)itemType + Offset}_desc";
+		protected static string GetDescriptionKey(CustomItemType itemType) => $"inv_use_{(int)itemType}_desc";
 
 		public static void SetDescription(CustomItemType type, string description, string speaker) =>
 			TimeSpinnerGame.Localizer.OverrideKey(GetDescriptionKey(type), description, speaker);
 
 		public static ItemIdentifier GetIdentifier(CustomItemType itemType) =>
-			new ItemIdentifier((EInventoryUseItemType)itemType + Offset);
+			new ItemIdentifier((EInventoryUseItemType)itemType);
 
 		public static void Initialize()
 		{
