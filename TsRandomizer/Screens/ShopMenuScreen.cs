@@ -1,22 +1,11 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Linq;
 using Timespinner.GameAbstractions.Inventory;
 using Timespinner.GameAbstractions.Saving;
 using Timespinner.GameStateManagement.ScreenManager;
 using TsRandomizer.Extensions;
 using TsRandomizer.IntermediateObjects;
-using System;
-using System.Collections.Generic;
-using System.Reflection;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using Timespinner.GameAbstractions;
-using TsRandomizer.Commands;
-using TsRandomizer.Drawables;
-using TsRandomizer.Randomisation;
-using TsRandomizer.Screens.Menu;
-using TsRandomizer.Screens.SeedSelection;
-using TsRandomizer.Settings;
 
 namespace TsRandomizer.Screens
 {

@@ -46,25 +46,6 @@ namespace TsRandomizer.LevelObjects.ItemManipulators
 				case LootType.ConstFamiliar:
 					Dynamic._lootFamiliarType = ItemInfo.Identifier.Familiar;
 					break;
-				// TODO look into this manipulator here
-				/* 
-				case LootType.ConstStat:
-					switch (ItemInfo.Identifier.Stat)
-					{
-						case EItemType.MaxHP:
-							Dynamic._lootStatBoostType = ETreasureStatBoostType.GetEnumValue("HP");
-							break;
-						case EItemType.MaxAura:
-							Dynamic._lootStatBoostType = ETreasureStatBoostType.GetEnumValue("Aura");
-							break;
-						case EItemType.MaxSand:
-							Dynamic._lootStatBoostType = ETreasureStatBoostType.GetEnumValue("Sand");
-							break;
-						default:
-							throw new ArgumentOutOfRangeException();
-					}
-					break;
-				*/
 				default:
 					throw new ArgumentOutOfRangeException(nameof(ItemInfo.Identifier.LootType), ItemInfo.Identifier.LootType, $"lootType cannot be droppd by {nameof(TreasureChest)}");
 			}

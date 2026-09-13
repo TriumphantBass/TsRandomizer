@@ -51,7 +51,6 @@ namespace TsRandomizer.LevelObjects.ItemManipulators
 					Dynamic._equipmentType = ItemInfo.Identifier.Equipment;
 					break;
 
-				// case LootType.ConstStat:
 				case LootType.ConstOrb:
 				case LootType.ConstFamiliar:
 					Dynamic._category = EInventoryCategoryType.Equipment;

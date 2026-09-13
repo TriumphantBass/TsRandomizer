@@ -57,7 +57,6 @@ namespace TsRandomizer.IntermediateObjects
 		{
 			LootType = LootType.UseItem;
 			ItemId = (int)useItem;
-			// TODO look into replicating stat type/extending for traps too
 		}
 
 		public ItemIdentifier(EInventoryRelicType relicType)
@@ -168,10 +167,6 @@ namespace TsRandomizer.IntermediateObjects
 						default:
 							throw new NotImplementedException($"Loottype {OrbSlot}.ToString() isnt implemented");
 					}
-				/*
-				case LootType.ConstStat:
-					return Stat.ToString();
-				*/
 				default:
 					throw new NotImplementedException($"Loottype {LootType}.ToString() isnt implemented");
 			}

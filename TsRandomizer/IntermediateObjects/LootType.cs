@@ -8,14 +8,13 @@ namespace TsRandomizer.IntermediateObjects
 	{
 		public const int ConstUseItem = 0;
 		public const int ConstRelic = 1;
-		// public const int ConstStat = 2;
+		// 2 was previously ConstStat
 		public const int ConstEquipment = 3;
 		public const int ConstOrb = 4;
 		public const int ConstFamiliar = 5;
 
 		public static readonly LootType UseItem = ConstUseItem;
 		public static readonly LootType Relic = ConstRelic;
-		// public static readonly LootType Stat = ConstStat;
 		public static readonly LootType Equipment = ConstEquipment;
 		public static readonly LootType Orb = ConstOrb;
 		public static readonly LootType Familiar = ConstFamiliar;
@@ -56,8 +55,6 @@ namespace TsRandomizer.IntermediateObjects
 					return EInventoryCategoryType.Relic;
 				case ConstUseItem:
 					return EInventoryCategoryType.UseItem;
-				//case ConstStat:
-				//	return (EInventoryCategoryType)(-1);
 				default:
 					throw new ArgumentOutOfRangeException($"LootType {lootType} isnt supported by EInventoryCategoryType");
 			}
